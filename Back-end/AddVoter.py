@@ -1,7 +1,7 @@
 from Module import *
 import conn
 
-class AddVoter(QWidget):
+class AddVoterC(QWidget):
     def __init__(self, MainWindow):
         super().__init__(MainWindow)
         self.MainWindow = MainWindow
