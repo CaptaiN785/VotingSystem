@@ -1,6 +1,6 @@
 from Module import *
 
-class AddCandidate(QWidget):
+class AddCandidateC(QWidget):
     def __init__(self, MainWindow):
         super().__init__(MainWindow)
         self.MainWindow = MainWindow
