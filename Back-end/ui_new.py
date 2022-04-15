@@ -106,34 +106,36 @@ class Ui_MainWindow(object):
 
 
         ###################### BUTTON FOR HOME############################
-        self.btn_Home = QtWidgets.QPushButton(self.frame_top_menus)
-        self.btn_Home.setMinimumSize(QtCore.QSize(40, 40))
-        self.btn_Home.setText("\u2261")
-        self.btn_Home.setStyleSheet("QPushButton {\n"
-                                    "    color: rgb(255, 255, 255);\n"
-                                    "    font-size:16px;\n"
-                                    "    background-color: rgb(35, 35, 35);\n"
-                                    "    border: 0px solid;\n"
-
-                                    "}\n"
-                                    "QPushButton:hover {\n"
-                                    "    background-color: rgb(85, 170, 255);\n"
-                                    "}")
+        self.btn_Home = QtWidgets.QPushButton()
+        self.verticalLayout_3.addWidget(self.btn_Home)
+        self.verticalLayout_3.setSpacing(20)
+        # self.btn_Home.setMinimumSize(QtCore.QSize(40, 40))
+        self.btn_Home.setFixedSize(100, 50)
+        # self.btn_Home.setText(u"\u2261")
+        self.btn_Home.setIcon(QIcon("../images/homeicon.png"))
+        self.btn_Home.setStyleSheet("""
+            QPushButton{
+                color:'#fff';
+                background:rgb(35, 35, 35 );
+                font-size:16px;
+            }
+        """)
         self.btn_Home.setObjectName("btn_Home")
         self.verticalLayout_4.addWidget(self.btn_Home)
 
 
         ###################### BUTTON TO ADD VOTER ###################
-        self.btn_AddVoter = QtWidgets.QPushButton(self.frame_top_menus)
-        self.btn_AddVoter.setMinimumSize(QtCore.QSize(0, 40))
-        self.btn_AddVoter.setStyleSheet("QPushButton {\n"
-                                        "    color: rgb(255, 255, 255);\n"
-                                        "    background-color: rgb(35, 35, 35);\n"
-                                        "    border: 0px solid;\n"
-                                        "}\n"
-                                        "QPushButton:hover {\n"
-                                        "    background-color: rgb(85, 170, 255);\n"
-                                        "}")
+        self.btn_AddVoter = QtWidgets.QPushButton()
+        self.verticalLayout_3.addWidget(self.btn_AddVoter)
+        self.btn_AddVoter.setIcon(QIcon("../images/addmember.png"))
+        self.btn_AddVoter.setMinimumSize(QtCore.QSize(70, 40))
+        self.btn_AddVoter.setStyleSheet("""
+            QPushButton{
+                color:'#fff';
+                background:rgb(35, 35, 35 );
+                font-size:16px;
+            }
+        """)
         self.btn_AddVoter.setObjectName("btn_AddVoter")
         self.verticalLayout_4.addWidget(self.btn_AddVoter)
 
