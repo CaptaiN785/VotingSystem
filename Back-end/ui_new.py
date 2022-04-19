@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
 
         ######################### TOP BAR ############################
         self.Top_Bar = QtWidgets.QFrame(self.centralwidget)
-        self.Top_Bar.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.Top_Bar.setMaximumSize(QtCore.QSize(16777215, 400))
         self.Top_Bar.setStyleSheet("background-color: rgb(35, 35, 35);")
         self.Top_Bar.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.Top_Bar.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
@@ -60,6 +60,8 @@ class Ui_MainWindow(object):
 
         #################### TOP FRAME ########################################
         self.verticalLayout_2.addWidget(self.Btn_Toggle)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setSpacing(10)
         self.horizontalLayout.addWidget(self.frame_toggle)
         self.frame_top = QtWidgets.QFrame(self.Top_Bar)
         self.frame_top.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -128,7 +130,7 @@ class Ui_MainWindow(object):
         self.btn_AddVoter = QtWidgets.QPushButton()
         self.verticalLayout_3.addWidget(self.btn_AddVoter)
         self.btn_AddVoter.setIcon(QIcon("../images/addmember.png"))
-        self.btn_AddVoter.setMinimumSize(QtCore.QSize(70, 40))
+        self.btn_AddVoter.setMinimumSize(QtCore.QSize(70, 400))
         self.btn_AddVoter.setStyleSheet("""
             QPushButton{
                 color:'#fff';
@@ -139,10 +141,9 @@ class Ui_MainWindow(object):
         self.btn_AddVoter.setObjectName("btn_AddVoter")
         self.verticalLayout_4.addWidget(self.btn_AddVoter)
 
-
         ###################### BUTTON TO ADD CANDIDATE ###################
         self.btn_AddCandidate = QtWidgets.QPushButton(self.frame_top_menus)
-        self.btn_AddCandidate.setMinimumSize(QtCore.QSize(0, 40))
+        self.btn_AddCandidate.setMinimumSize(QtCore.QSize(0, 400))
         self.btn_AddCandidate.setStyleSheet("QPushButton {\n"
                                             "    color: rgb(255, 255, 255);\n"
                                             "    background-color: rgb(35, 35, 35);\n"
