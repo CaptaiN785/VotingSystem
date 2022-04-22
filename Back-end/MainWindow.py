@@ -55,7 +55,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_AddVoter.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.AddVoter))
         # PAGE 3
         self.ui.btn_AddCandidate.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.AddCandidate))
-
+        # PAGE 4
+        self.ui.btn_ElectionDate.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.ElectionDate))
         ## SHOW ==> MAIN WINDOW
         ########################################################################
         self.show()

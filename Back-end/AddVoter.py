@@ -7,7 +7,7 @@ class AddVoterC(QWidget):
         self.MainWindow = MainWindow
         self.items = []
         self.Image = None
-        self.setStyleSheet(f"background:{PRIMARY_COLOR};color:'#fff';")
+        self.setStyleSheet(f"color:'#fff';")
         self.Layout = QFormLayout()
         self.setLayout(self.Layout)
         self.setContentsMargins(50, 10, 50, 10)
@@ -51,7 +51,7 @@ class AddVoterC(QWidget):
         self.dob = QDateEdit()
         self.dob.setStyleSheet("*{font-size:16px;max-width:400px;"+
                 "border:2px solid '#fff';"+
-                "background:'#151236';padding:10px 20px; margin-top:20px;}")
+                "padding:10px 0px; margin-top:20px;}")
         self.items.append(self.dobLabel)
         self.Layout.addRow(self.dobLabel, self.dob)
         self.dobVerified = False
@@ -90,7 +90,7 @@ class AddVoterC(QWidget):
                 "*:active{ border-color:'#f00'; }")
             elif type(item) == QComboBox:
                 item.setStyleSheet("padding:10px 20px;color:'#fff';max-width:400px;"+
-                "margin-top:20px;font-size:16px;background:'#0400c4';")
+                "margin-top:20px;font-size:16px;;")
             else:
                 item.setStyleSheet("font-size:18px;color:'#fff';margin-top:20px;")
 
