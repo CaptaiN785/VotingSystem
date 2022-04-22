@@ -22,6 +22,7 @@ def get_voterid_list():
         cursor.execute("SELECT VOTERID FROM VOTER")
         
         voter_list = cursor.fetchall()
+        voter_list = [item[0] for item in voter_list]
         cursor.close()
         conn.close()
         return voter_list
