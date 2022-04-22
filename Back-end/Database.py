@@ -129,7 +129,7 @@ def get_voter_photo(voterid):
         with open('voter.png', 'wb') as file:
             file.write(image)
         
-        
+        return "voter.png"
 
     except Exception as e:
         print("Error while fetching image of voter.")

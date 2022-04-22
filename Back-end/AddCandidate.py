@@ -87,7 +87,7 @@ class AddCandidateC(QWidget):
         self.info = QLabel("{} \n{}".format(info["name"], info["dob"])) # showing name and dob for clarification
         # self.info.setEnabled(False)
 
-        self.image = QPixmap("../images/addmember.png")
+        self.image = QPixmap(Database.get_voter_photo(voterid))
         self.imageUI = QLabel()
         self.imageUI.setPixmap(self.image.scaled(100, 120, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation))
         self.layout.addRow(self.info, self.imageUI)
