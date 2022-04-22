@@ -172,7 +172,53 @@ def add_election_detail(name, date, post, aid):
         print("Error while adding election details.")
         return False
 
+def get_upcoming_election_list():
+    """It will return name of elections and dic mapping with name and EID(election id)"""
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        sql = "SELECT EID, NAME FROM ELECTION WHERE DATE > CURDATE()"
+        cursor.execute(sql)
+        lst = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        names = []
+        dic = {}
+        for eid, name in lst:
+            names.append(name)
+            dic[name] = eid
+
+        return names, dic
+
+    except Exception as e:
+        print("Error while fetching election list")
+
+def get_past_election_list():
+    """It will return name of elections and dic mapping with name and EID(election id)"""
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        sql = "SELECT EID, NAME FROM ELECTION WHERE DATE <= CURDATE()"
+        cursor.execute(sql)
+        lst = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        names = []
+        dic = {}
+        for eid, name in lst:
+            names.append(name)
+            dic[name] = eid
+
+        return names, dic
+
+    except Exception as e:
+        print("Error while fetching election list")
+
 if __name__ == '__main__':
     # get_voter_info(76736087)
     # get_voter_photo(76736087)
-    get_assembly_list()
+    # get_assembly_list()
+    name, eid = get_past_election_list()
+    print(name, eid)
