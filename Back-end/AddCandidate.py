@@ -73,18 +73,18 @@ class AddCandidateC(QWidget):
             showWarning("Entered voterid is not valid.")
             return
 
-        vid = int(vid)
+        voterid = int(vid)
         voter_list = Database.get_voterid_list()
 
-        if not vid in voter_list:
+        if not voterid in voter_list:
             showWarning("No record found.")
             return
         
         self.vid.setEnabled(False)
         self.searchBtn.hide()
 
-        self.info = QLabel()
-        self.info.setText("Mukesh Kumar Thakur \n01-01-2000")
+        info = Database.get_voter_info(voterid)
+        self.info = QLabel("{} \n{}".format(info["name"], info["dob"])) # showing name and dob for clarification
         # self.info.setEnabled(False)
 
         self.image = QPixmap("../images/addmember.png")
