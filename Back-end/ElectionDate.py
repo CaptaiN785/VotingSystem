@@ -1,6 +1,6 @@
 from Module import *
 import Database
-
+import datetime
 class ElectionDate(QWidget):
     def __init__(self, MainWindow):
         super().__init__(MainWindow)
@@ -8,7 +8,7 @@ class ElectionDate(QWidget):
         self.POSTS = POSTS
         self.layout = QFormLayout()
         self.setLayout(self.layout)
-        assemblyList, assemblyMap = Database.get_assembly_list() #
+        self.assemblyList, self.assemblyMap = Database.get_assembly_list() #
         # assemblyList has assembly name
         # assemblyMap has name as key and aid as value in its dictionary
 
@@ -33,13 +33,14 @@ class ElectionDate(QWidget):
 
         self.assemblyLabel = QLabel("Select assembly")
         self.assembly = QComboBox()
-        self.assembly.addItems(assemblyList)
+        self.assembly.addItems(self.assemblyList)
         self.layout.addRow(self.assemblyLabel, self.assembly)
 
         self.submit = QPushButton("Create election")
         self.submit.setIcon(QIcon("../images/tick.png"))
         self.submit.setMaximumWidth(400)
         self.submit.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.submit.clicked.connect(self.add_election)
         self.layout.addRow(self.submit)
 
         self.setStyleSheet("""
@@ -69,6 +70,30 @@ class ElectionDate(QWidget):
                 color:'#fff';
             }
         """)
+    
+    def add_election(self):
+        print("inside add electio.")
+        name = self.name.text()
+        date = self.date.text()
+        ed = datetime.datetime(day = int(date[0:2]), month=int(date[3:5]), year=int(date[-4:]))
+        now = datetime.datetime.now()
+        if ed < now :
+            showWarning("Please check the election date.")
+            return
+        post = self.post.currentText()
+        assembly = self.assembly.currentText()
+        aid = self.assemblyMap[assembly]
 
+        if Database.add_election_detail(name, date, post, aid):
+            showWarning("Election details added succesfully.", "Success")
+        else:
+            showWarning("Unable to add election details.")
 
+        self.name.setText("")
 
+def showWarning(message, text="Warning"):
+    msg = QMessageBox()
+    msg.setWindowIcon(QIcon('../images/logo.png'))
+    msg.setWindowTitle(text)
+    msg.setText(message)
+    x = msg.exec()
