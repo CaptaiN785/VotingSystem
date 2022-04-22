@@ -101,5 +101,20 @@ def add_voter(name, phone, email, dob, assembly, pin, image):
 
     return True
 
+def get_voter_info(voterid):
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = "SELECT * FROM VOTER WHERE VOTERID = {}".format(voterid)
+        cursor.execute(sql)
+        ls = cursor.fetchone()
+        dic = {}
+        dic["voterid"], dic["name"], dic["phone"],dic["email"], dic["dob"],dic["reg"], dic["pin"], dic["assemblyid"] = ls
+    except Exception as e:
+        print("Server error while fetching information of voter.")
+        return -1
+
+    return dic
+
 if __name__ == '__main__':
-    get_voterid_list()
+    get_voter_info(76736087)
