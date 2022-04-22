@@ -164,7 +164,7 @@ def add_election_detail(name, date, post, aid):
                 VALUES ('{}', STR_TO_DATE('{}', '%d-%m-%Y'), '{}',{})""".format(name, date, post, aid)
         cursor.execute(sql)
         print("Election added successfully.")
-        
+        return True
     except Exception as e:
         print("Error while adding election details.")
 
