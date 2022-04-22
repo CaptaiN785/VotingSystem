@@ -1,6 +1,6 @@
 from Module import *
 import conn
-
+import Database
 class AddVoterC(QWidget):
     def __init__(self, MainWindow):
         super().__init__(MainWindow)
@@ -59,7 +59,7 @@ class AddVoterC(QWidget):
         # Assembly
         self.assemblyLabel = QLabel("Select your assembly")
         self.assembly = QComboBox()
-        self.assembly.insertItem(0,"Select you assembly")
+        self.assembly.insertItem(0,"Select your assembly")
         self.assembly.addItems(self.ANAME)
         self.items.append(self.assemblyLabel)
         self.items.append(self.assembly)
@@ -123,71 +123,21 @@ class AddVoterC(QWidget):
 
     ################################        adding voter to database
     def addVoter(self):
-        if self.validated():
-            try:
-                voterid = self.generateVoterId()
-                Name = self.name.text()
-                Phone = int(self.phone.text())
-                Email = self.email.text()
-                DOB = self.dob.text()
-                Assembly = int(self.AID[self.assembly.currentText()])
-                Pin = self.pin.currentText()
-                Image = self.Image
-                # print(Image)
-                # values = (voterid, Name, Phone, Email, DOB, Image, Pin, Assembly)
-                # query = 'insert into voter values({}, "{}", {}, "{}", str_to_date("%\d-%m-%y","{}"), now(), "{}", "{}", {})'.format(voterid, Name, Phone, Email, DOB, Image, Pin, Assembly)
-                self.conn = conn.conn
-                cursor = self.conn.cursor()
-                cursor.execute('insert into voter values(%d, %s, %d, %s, str_to_date("%d-%m-%y",%s), now(), %s, %s, %d)',(voterid, Name, Phone, Email, DOB, Image, Pin, Assembly,))
-                self.conn.commit()
-                print(cursor)
-            except mysql.connector.Error as e:
-                print("database error while uploading details", e)
-    
-    def validated(self):
         Name = self.name.text()
-        Name = Name.strip()
-        if len(Name) < 3 or len(Name) > 20:
-            self.name.setFocus()
-            showWarning("Please enter your correct name \n")
-            return False
-
         Phone = self.phone.text()
-        if Phone == "" or len(Phone) != 10 or not Phone.isnumeric():
-            self.phone.setFocus()
-            showWarning("Please enter your valid phone number \n")
-            return False
-
         Email = self.email.text()
-        if Email == "" or not "@" in Email or not "." in Email:
-            self.email.setFocus()
-            showWarning("Please enter valid email address \n")
-            return False
-
         DOB = self.dob.text()
-        if DOB == "01-01-2000" and not self.dobVerified:
-            showWarning("Please verify your DOB")
-            self.dobVerified = True
-            return False
-        
         Assembly = self.assembly.currentText()
-        if Assembly not in self.ANAME:
-            self.assembly.setFocus()
-            showWarning("Please choose your assembly.")
-            return False
-        
         Pin = self.pin.currentText()
-        if Pin not in self.PIN:
-            self.pin.setFocus()
-            showWarning("Please select your PIN")
-            return False
         Image = self.Image
-        if Image == None:
-            showWarning("Please select image")
-            return False
-        # print(Name, Phone, Email, DOB, Assembly, Pin, Image)
-        return True
-    
+
+        if(Database.add_voter(Name, Phone, Email, DOB, Assembly, Pin, Image)):
+            showWarning("Voter is added.", text="Sucess")
+            self.reset()
+        else:
+            showWarning("Error in adding voter.")
+        
+
     def chooseImage(self):
         fileName = QFileDialog.getOpenFileName(self,
         "Select Image", "", "Image Files (*.png *.jpg)")
@@ -203,16 +153,18 @@ class AddVoterC(QWidget):
             binaryData = file.read()
         return binaryData
     
-    def generateVoterId(self):
-        vid = random.randint(10000000, 99999999)
-        while vid in self.VID:
-            vid = random.randint(10000000, 99999999)
-        
-        return vid
+    def reset(self):
+        self.name.setText("")
+        self.phone.setText("")
+        self.email.setText("")
+        self.assembly.currentText()
+        self.pin.currentText()
+        self.Image = None
+        self.imageLabel.setPixmap(self.imageSelected.scaledToHeight(200,Qt.TransformationMode.SmoothTransformation))
 
-def showWarning(message):
+def showWarning(message, text="Warning"):
     msg = QMessageBox()
     msg.setWindowIcon(QIcon('../images/logo.png'))
-    msg.setWindowTitle("Warning")
+    msg.setWindowTitle(text)
     msg.setText(message)
     x = msg.exec()
