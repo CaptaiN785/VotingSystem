@@ -167,6 +167,7 @@ def add_election_detail(name, date, post, aid):
         return True
     except Exception as e:
         print("Error while adding election details.")
+        return False
 
 if __name__ == '__main__':
     # get_voter_info(76736087)
