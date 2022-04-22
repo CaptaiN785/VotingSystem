@@ -67,6 +67,8 @@ class AddCandidateC(QWidget):
         self.searchBtn.clicked.connect(self.loadAdditionalUI)
 
     def loadAdditionalUI(self):
+        # Taking election name for adding in that election.
+        self.electionName, self.electionMap = Database.get_upcoming_election_list()
 
         vid = self.vid.text()
         if not vid.isdigit():
@@ -92,10 +94,10 @@ class AddCandidateC(QWidget):
         self.imageUI.setPixmap(self.image.scaled(100, 120, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation))
         self.layout.addRow(self.info, self.imageUI)
     
-        self.postlabel = QLabel("Select post ")        
-        self.post = QComboBox()
-        self.post.addItems(self.POSTS)
-        self.layout.addRow(self.postlabel,  self.post)
+        self.electionlabel = QLabel("Select election")        
+        self.election = QComboBox()
+        self.election.addItems(self.electionName)
+        self.layout.addRow(self.electionlabel,  self.election)
         
         self.symbol = QPushButton("  Select symbol")
         self.symbol.clicked.connect(self.chooseImage)
