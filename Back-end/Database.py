@@ -118,6 +118,25 @@ def get_voter_info(voterid):
 
     return dic
 
+def get_assembly_list():
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = "SELECT AID, NAME FROM ASSEMBLY"
+        cursor.execute(sql)
+
+        ls = cursor.fetchall()
+        dic = {}
+        lst = []
+        for aid, name in ls:
+            dic[name] = aid
+            lst.append(name)
+
+        return (lst, dic)
+
+    except Exception as e:
+        print("Error while fetching assembly list.")
+
 def get_voter_photo(voterid):
     try:
         conn = get_connection()
@@ -136,4 +155,5 @@ def get_voter_photo(voterid):
 
 if __name__ == '__main__':
     # get_voter_info(76736087)
-    get_voter_photo(76736087)
+    # get_voter_photo(76736087)
+    get_assembly_list()
