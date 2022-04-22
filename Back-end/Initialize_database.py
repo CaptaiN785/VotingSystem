@@ -98,6 +98,19 @@ def initialize_database(host, user, password, database):
         mycursor.execute(createPhoto)
         print("Photo is created")
 
+        # Creating election table for inserting election date post and all.
+        createElection = """
+            CREATE TABLE IF NOT EXISTS ELECTION(
+                EID INT PRIMARY KEY AUTO_INCREMENT,
+                NAME VARCHAR(30),
+                POST VARCHAR(20),
+                DATE DATE,
+                AID INT
+            )
+        """
+        mycursor.execute(createElection)
+        print("Election table is created.")
+
         # Closing the connection.
         if conn:
             conn.close()
