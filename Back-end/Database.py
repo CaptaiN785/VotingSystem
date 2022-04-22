@@ -155,6 +155,19 @@ def get_voter_photo(voterid):
     except Exception as e:
         print("Error while fetching image of voter.")
 
+def add_election_detail(name, date, post, aid):
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        sql = """INSERT INTO ELECTION(NAME, DATE, POST, AID) 
+                VALUES ('{}', STR_TO_DATE('{}', '%d-%m-%Y'), '{}',{})""".format(name, date, post, aid)
+        cursor.execute(sql)
+        print("Election added successfully.")
+        
+    except Exception as e:
+        print("Error while adding election details.")
+
 if __name__ == '__main__':
     # get_voter_info(76736087)
     # get_voter_photo(76736087)
