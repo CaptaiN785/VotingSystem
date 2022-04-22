@@ -1,4 +1,5 @@
 from Module import *
+import Database
 
 class ElectionDate(QWidget):
     def __init__(self, MainWindow):
@@ -7,6 +8,9 @@ class ElectionDate(QWidget):
         self.POSTS = POSTS
         self.layout = QFormLayout()
         self.setLayout(self.layout)
+        assemblyList, assemblyMap = Database.get_assembly_list() #
+        # assemblyList has assembly name
+        # assemblyMap has name as key and aid as value in its dictionary
 
         self.header = QLabel("Set Election Date")
         self.header.setAlignment(Qt.AlignmentFlag.AlignHCenter)
@@ -26,9 +30,16 @@ class ElectionDate(QWidget):
         self.post = QComboBox()
         self.post.addItems(self.POSTS)
         self.layout.addRow(self.postLabel, self.post)
-        
+
+        self.assemblyLabel = QLabel("Select assembly")
+        self.assembly = QComboBox()
+        self.assembly.addItems(assemblyList)
+        self.layout.addRow(self.assemblyLabel, self.assembly)
+
         self.submit = QPushButton("Create election")
         self.submit.setIcon(QIcon("../images/tick.png"))
+        self.submit.setMaximumWidth(400)
+        self.submit.setCursor(Qt.CursorShape.PointingHandCursor)
         self.layout.addRow(self.submit)
 
         self.setStyleSheet("""
@@ -46,6 +57,7 @@ class ElectionDate(QWidget):
             }
             QPushButton{
                 padding:10px 30px;
+                margin-top:40px;
                 background:'#fff';
                 color:'#0400c4';
                 border:2px solid '#0400c4';
