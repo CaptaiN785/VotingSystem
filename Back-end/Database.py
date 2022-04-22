@@ -126,6 +126,8 @@ def get_assembly_list():
         cursor.execute(sql)
 
         ls = cursor.fetchall()
+        cursor.close()
+        conn.close()
         dic = {}
         lst = []
         for aid, name in ls:
