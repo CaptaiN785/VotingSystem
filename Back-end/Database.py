@@ -108,6 +108,8 @@ def get_voter_info(voterid):
         sql = "SELECT * FROM VOTER WHERE VOTERID = {}".format(voterid)
         cursor.execute(sql)
         ls = cursor.fetchone()
+        cursor.close()
+        conn.close()
         dic = {}
         dic["voterid"], dic["name"], dic["phone"],dic["email"], dic["dob"],dic["reg"], dic["pin"], dic["assemblyid"] = ls
     except Exception as e:
@@ -116,5 +118,22 @@ def get_voter_info(voterid):
 
     return dic
 
+def get_voter_photo(voterid):
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = "SELECT IMAGE FROM PHOTO WHERE VOTERID = {}".format(voterid)
+        cursor.execute(sql)
+        image = cursor.fetchone()[0]
+        # print(image)
+        with open('voter.png', 'wb') as file:
+            file.write(image)
+        
+        
+
+    except Exception as e:
+        print("Error while fetching image of voter.")
+
 if __name__ == '__main__':
-    get_voter_info(76736087)
+    # get_voter_info(76736087)
+    get_voter_photo(76736087)
