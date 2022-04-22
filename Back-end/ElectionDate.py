@@ -75,9 +75,9 @@ class ElectionDate(QWidget):
         print("inside add electio.")
         name = self.name.text()
         date = self.date.text()
-        ed = datetime.datetime(day = int(date[0:2]), month=int(date[3:5]), year=int(date[-4:]))
-        now = datetime.datetime.now()
-        if ed < now :
+        ed = datetime.date(int(date[-4:]), int(date[3:5]), int(date[0:2]))
+        now = datetime.date.today()
+        if ed < now:
             showWarning("Please check the election date.")
             return
         post = self.post.currentText()
