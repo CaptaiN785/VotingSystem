@@ -1,4 +1,6 @@
+from tkinter.messagebox import showwarning
 from Module import *
+import Database
 
 class AddCandidateC(QWidget):
     def __init__(self, MainWindow):
@@ -65,6 +67,19 @@ class AddCandidateC(QWidget):
         self.searchBtn.clicked.connect(self.loadAdditionalUI)
 
     def loadAdditionalUI(self):
+
+        vid = self.vid.text()
+        if not vid.isdigit():
+            showWarning("Entered voterid is not valid.")
+            return
+
+        vid = int(vid)
+        voter_list = Database.get_voterid_list()
+
+        if not vid in voter_list:
+            showWarning("No record found.")
+            return
+        
         self.vid.setEnabled(False)
         self.searchBtn.hide()
 
@@ -109,3 +124,10 @@ class AddCandidateC(QWidget):
         with open(filename, 'rb') as file:
             binaryData = file.read()
         return binaryData    
+
+def showWarning(message, text="Warning"):
+    msg = QMessageBox()
+    msg.setWindowIcon(QIcon('../images/logo.png'))
+    msg.setWindowTitle(text)
+    msg.setText(message)
+    x = msg.exec()
