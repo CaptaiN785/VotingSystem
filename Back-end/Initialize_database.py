@@ -111,6 +111,18 @@ def initialize_database(host, user, password, database):
         mycursor.execute(createElection)
         print("Election table is created.")
 
+        createCandidate = """
+            CREATE TABLE IF NOT EXISTS CANDIDATE(
+                CID INT PRIMARY KEY AUTO_INCREMENT,
+                VID INT, 
+                EID INT,
+                VOTE INT,
+                SYMBOL LONGBLOB
+            )
+        """
+        mycursor.execute(createCandidate)
+        print("Candidate table is created.")
+
         # Closing the connection.
         if conn:
             conn.close()
