@@ -255,7 +255,7 @@ def add_candidate(cid, eid, symbol):
         conn.close()
         return True
     except Exception as e:
-        print("Error while adding candidate.", e.with_traceback())
+        print("Error while adding candidate.")
         return False
 
 if __name__ == '__main__':
