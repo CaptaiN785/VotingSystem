@@ -19,7 +19,7 @@ class ElectionDate(QWidget):
         self.setContentsMargins(100, 30, 100, 30)
 
         self.nameLabel = QLabel("Add election name")
-        self.name = QLineEdit(placeholderText="Enter election name")
+        self.name = QLineEdit(placeholderText="name(only alphanum or _ and no space)")
         self.layout.addRow(self.nameLabel, self.name)
 
         self.dateLabel = QLabel("Select election date")

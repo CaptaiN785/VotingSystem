@@ -163,6 +163,15 @@ def add_election_detail(name, date, post, aid):
         sql = """INSERT INTO ELECTION(NAME, DATE, POST, AID) 
                 VALUES ('{}', STR_TO_DATE('{}', '%d-%m-%Y'), '{}',{})""".format(name, date, post, aid)
         cursor.execute(sql)
+        print("election info is added.")
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS {}(
+                VID int primary key,
+                casted int
+            )
+        """.format(name))
+        print("Election table is created.")
+
         conn.commit()
         cursor.close()
         conn.close()
