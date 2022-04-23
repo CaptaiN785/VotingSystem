@@ -97,20 +97,29 @@ class AddCandidateC(QWidget):
         self.electionlabel = QLabel("Select election")        
         self.election = QComboBox()
         self.election.addItems(self.electionName)
+        self.election.activated.connect(self.itemChanged)
         self.layout.addRow(self.electionlabel,  self.election)
         
-        self.symbol = QPushButton("  Select symbol")
-        self.symbol.clicked.connect(self.chooseImage)
-        self.symbol.setIcon(QIcon("../images/shareicon.png"))
-        self.symbol.setStyleSheet("border-radius:0px;font-size:14px; padding:5px 30px;")
+        # self.symbol = QPushButton("  Select symbol")
+        # self.symbol.clicked.connect(self.chooseImage)
+        # self.symbol.setIcon(QIcon("../images/shareicon.png"))
+        # self.symbol.setStyleSheet("border-radius:0px;font-size:14px; padding:5px 30px;")
+
+        self.sLabel = QLabel("Symbol")
         self.symbolLabel = QLabel()
-        self.symbolLabel.setPixmap(QPixmap("images/addmember.png").scaled(80, 80, transformMode=Qt.TransformationMode.SmoothTransformation))
-        self.layout.addRow(self.symbol,self.symbolLabel)
+        symbol = Database.get_next_symbol(self.electionMap[self.election.currentText()])
+        self.symbolLabel.setPixmap(QPixmap(symbol).scaled(80, 80, transformMode=Qt.TransformationMode.SmoothTransformation))
+        self.layout.addRow(self.sLabel, self.symbolLabel)
 
         self.submit = QPushButton("  Submit")
         self.submit.setIcon(QIcon("../images/tick.png"))
         self.submit.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.submit.clicked.connect(self.add_candidate)
         self.layout.addRow(self.submit)
+
+    def itemChanged(self):
+        symbol = Database.get_next_symbol(self.electionMap[self.election.currentText()])
+        self.symbolLabel.setPixmap(QPixmap(symbol).scaled(80, 80, transformMode=Qt.TransformationMode.SmoothTransformation))
 
     def chooseImage(self):
         fileName = QFileDialog.getOpenFileName(self,
@@ -126,6 +135,17 @@ class AddCandidateC(QWidget):
         with open(filename, 'rb') as file:
             binaryData = file.read()
         return binaryData    
+    
+    def add_candidate(self):
+        vid = int(self.vid.text())
+        eid = self.electionMap[self.election.currentText()]
+        symbol = Database.get_next_symbol(eid)
+
+        if(Database.add_candidate(vid, eid, symbol)):
+            showWarning("Candidate added succesfully", "Success")
+
+        else:
+            showWarning("Error adding candidate.")
 
 def showWarning(message, text="Warning"):
     msg = QMessageBox()

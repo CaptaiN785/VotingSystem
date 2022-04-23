@@ -240,6 +240,24 @@ def get_next_symbol(eid):
     except Exception as e:
         print("Error while fetchign net symbol.")
 
+def add_candidate(cid, eid, symbol):
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """INSERT INTO CANDIDATE(VID, EID, VOTE, SYMBOL) VALUES(
+            {}, {}, 0, '{}'
+        )""".format(cid, eid, symbol)
+
+        cursor.execute(sql)
+        conn.commit()
+        print("candidate added succesfully.")
+        cursor.close()
+        conn.close()
+        return True
+    except Exception as e:
+        print("Error while adding candidate.", e.with_traceback())
+        return False
+
 if __name__ == '__main__':
     # get_voter_info(76736087)
     # get_voter_photo(76736087)
