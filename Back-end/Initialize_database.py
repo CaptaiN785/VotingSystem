@@ -114,7 +114,7 @@ def initialize_database(host, user, password, database):
         createCandidate = """
             CREATE TABLE IF NOT EXISTS CANDIDATE(
                 CID INT PRIMARY KEY AUTO_INCREMENT,
-                VID INT, 
+                VID INT UNIQUE,
                 EID INT,
                 VOTE INT,
                 SYMBOL VARCHAR(100)
