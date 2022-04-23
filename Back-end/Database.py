@@ -244,8 +244,8 @@ def add_candidate(cid, eid, symbol):
     try:
         conn = get_connection()
         cursor = conn.cursor()
-        sql = """INSERT INTO CANDIDATE(VID, EID, VOTE, SYMBOL) VALUES(
-            {}, {}, 0, '{}'
+        sql = """INSERT INTO CANDIDATE(VID, EID, SYMBOL) VALUES(
+            {}, {}, '{}'
         )""".format(cid, eid, symbol)
 
         cursor.execute(sql)
