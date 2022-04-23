@@ -117,7 +117,7 @@ def initialize_database(host, user, password, database):
                 VID INT, 
                 EID INT,
                 VOTE INT,
-                SYMBOL LONGBLOB
+                SYMBOL VARCHAR(100)
             )
         """
         mycursor.execute(createCandidate)
