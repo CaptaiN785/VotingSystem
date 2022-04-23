@@ -225,9 +225,25 @@ def get_past_election_list():
     except Exception as e:
         print("Error while fetching election list")
 
+def get_next_symbol(eid):
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = "SELECT COUNT(*) FROM CANDIDATE WHERE EID = {}".format(eid)
+        cursor.execute(sql)
+
+        ls = cursor.fetchone()[0]
+        
+        symbol_path = "../symbol/{}.png".format(int(ls)+1)
+
+        return symbol_path
+    except Exception as e:
+        print("Error while fetchign net symbol.")
+
 if __name__ == '__main__':
     # get_voter_info(76736087)
     # get_voter_photo(76736087)
     # get_assembly_list()
-    name, eid = get_past_election_list()
-    print(name, eid)
+    # name, eid = get_past_election_list()
+    # print(name, eid)
+    print(get_next_symbol(2))
