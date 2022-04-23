@@ -74,6 +74,9 @@ class ElectionDate(QWidget):
     def add_election(self):
         print("inside add electio.")
         name = self.name.text()
+        if len(name) < 3:
+            showWarning("Please check election name.")
+            return
         date = self.date.text()
         ed = datetime.date(int(date[-4:]), int(date[3:5]), int(date[0:2]))
         now = datetime.date.today()
