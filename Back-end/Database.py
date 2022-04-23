@@ -167,7 +167,7 @@ def add_election_detail(name, date, post, aid):
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS {}(
                 VID int primary key,
-                casted int
+                CID int
             )
         """.format(name))
         print("Election table is created.")
