@@ -116,7 +116,6 @@ def initialize_database(host, user, password, database):
                 CID INT PRIMARY KEY AUTO_INCREMENT,
                 VID INT UNIQUE,
                 EID INT,
-                VOTE INT,
                 SYMBOL VARCHAR(100)
             )
         """
