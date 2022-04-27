@@ -1,9 +1,8 @@
 from Module import *
-from Color import *
-
-from Home import*
-from AddCandidate import*
-from AddVoter import*
+from Home import *
+from AddCandidate import *
+from AddVoter import *
+import Database
 
 import ElectionDate
 import Analytics
@@ -11,7 +10,6 @@ import Analytics
 ####################################
 app = QApplication(sys.argv)
 app.setStyle('Fusion')
-
 
 # GUI FILE
 from ui_new import *
@@ -22,6 +20,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.showMaximized()
+        Database.initialize_database()
 
         def toggleMenu(self, maxWidth, enable):
             if enable:

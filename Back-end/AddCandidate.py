@@ -1,4 +1,3 @@
-from tkinter.messagebox import showwarning
 from Module import *
 import Database
 
@@ -10,7 +9,8 @@ class AddCandidateC(QWidget):
         self.setLayout(self.layout)
         self.setContentsMargins(100, 10, 100, 50)
         self.Image = None
-        self.POSTS = POSTS
+        
+
 
         self.setStyleSheet("""
             QLineEdit{

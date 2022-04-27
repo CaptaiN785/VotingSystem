@@ -3,14 +3,3 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 import sys
-from Color import *
-import mysql.connector
-import re
-import random
-
-import datetime
-import cv2
-# import face_recognition
-
-LOGO_PATH = "../images/eci-logo.png"
-POSTS = ["MLA", "Mukhiya", "Ward Member"]

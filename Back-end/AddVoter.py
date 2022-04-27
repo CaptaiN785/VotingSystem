@@ -1,6 +1,6 @@
 from Module import *
-import conn
 import Database
+
 class AddVoterC(QWidget):
     def __init__(self, MainWindow):
         super().__init__(MainWindow)
@@ -12,10 +12,7 @@ class AddVoterC(QWidget):
         self.setLayout(self.Layout)
         self.setContentsMargins(50, 10, 50, 10)
         self.show()
-        self.PIN = sorted(conn.PIN)
-        self.AID = conn.AID
-        self.ANAME = sorted(conn.ANAME)
-        self.VID = conn.VID
+
         ############### database connectivity ######################
         
         #############################################################
@@ -60,7 +57,8 @@ class AddVoterC(QWidget):
         self.assemblyLabel = QLabel("Select your assembly")
         self.assembly = QComboBox()
         self.assembly.insertItem(0,"Select your assembly")
-        self.assembly.addItems(self.ANAME)
+        self.assemblyList = Database.get_assembly_list()[0]
+        self.assembly.addItems(self.assemblyList)
         self.items.append(self.assemblyLabel)
         self.items.append(self.assembly)
         self.Layout.addRow(self.assemblyLabel, self.assembly)
@@ -69,7 +67,8 @@ class AddVoterC(QWidget):
         self.pinLabel = QLabel("Enter your pin")
         self.pin = QComboBox()
         self.pin.insertItem(0, "Select your pin")
-        self.pin.addItems(self.PIN)
+        self.PINS = Database.get_pin_list()
+        self.pin.addItems(self.PINS)
         self.items.append(self.pinLabel)
         self.items.append(self.pin)
         self.Layout.addRow(self.pinLabel, self.pin)
@@ -130,7 +129,6 @@ class AddVoterC(QWidget):
         Assembly = self.assembly.currentText()
         Pin = self.pin.currentText()
         Image = self.Image
-
         if(Database.add_voter(Name, Phone, Email, DOB, Assembly, Pin, Image)):
             showWarning("Voter is added.", text="Sucess")
             self.reset()

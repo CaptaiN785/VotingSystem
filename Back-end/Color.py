@@ -1,7 +1,0 @@
-PRIMARY_COLOR = '#151236'
-SECONDARY_COLOR = '#0400c4'
-WHITE = '#fff'
-BLACK = '#000'
-RED = '#ff0000'
-GREEN = '#00ff00'
-

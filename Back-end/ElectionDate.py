@@ -5,7 +5,7 @@ class ElectionDate(QWidget):
     def __init__(self, MainWindow):
         super().__init__(MainWindow)
         self.MainWindow = MainWindow
-        self.POSTS = POSTS
+        self.POSTS = Database.POSTS
         self.layout = QFormLayout()
         self.setLayout(self.layout)
         self.assemblyList, self.assemblyMap = Database.get_assembly_list() #
