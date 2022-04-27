@@ -1,7 +1,3 @@
-import mysql.connector
-
-
-
 def insertpostaladdress(cursor):
     """here inserting some of dummy entries for simple execution of program"""
     dummy = [

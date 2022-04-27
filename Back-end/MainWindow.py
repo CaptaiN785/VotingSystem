@@ -20,7 +20,6 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.showMaximized()
-        Database.initialize_database()
 
         def toggleMenu(self, maxWidth, enable):
             if enable:

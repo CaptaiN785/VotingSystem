@@ -11,6 +11,7 @@ class AddVoterC(QWidget):
         self.Layout = QFormLayout()
         self.setLayout(self.Layout)
         self.setContentsMargins(50, 10, 50, 10)
+        self.defaultImage = QPixmap("../images/user.png") # default user image in  adding voter
         self.show()
 
         ############### database connectivity ######################
@@ -100,9 +101,8 @@ class AddVoterC(QWidget):
         VBL = QVBoxLayout()
         sidepanel.setLayout(VBL)
 
-        self.imageSelected = QPixmap("../images/user.png")
         self.imageLabel = QLabel()
-        self.imageLabel.setPixmap(self.imageSelected.scaledToHeight(200,Qt.TransformationMode.SmoothTransformation))
+        self.imageLabel.setPixmap(self.defaultImage.scaledToHeight(200,Qt.TransformationMode.SmoothTransformation))
         self.imageLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.imageLabel.setStyleSheet("border:2px solid '#fff';padding:0px;min-height:200px;")
 
@@ -158,7 +158,7 @@ class AddVoterC(QWidget):
         self.assembly.currentText()
         self.pin.currentText()
         self.Image = None
-        self.imageLabel.setPixmap(self.imageSelected.scaledToHeight(200,Qt.TransformationMode.SmoothTransformation))
+        self.imageLabel.setPixmap(self.defaultImage.scaledToHeight(200,Qt.TransformationMode.SmoothTransformation))
 
 def showWarning(message, text="Warning"):
     msg = QMessageBox()
