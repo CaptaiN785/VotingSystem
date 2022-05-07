@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="https://html5-templates.com/" />
-    <title>Home</title>
+    <title></title>
     <meta name="description" content="Simplified Bootstrap template with sticky menu">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/sticky-menu.css" rel="stylesheet">
@@ -29,7 +29,7 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="#elections">Elections</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#whatwedo">What We Do</a>
@@ -49,7 +49,7 @@
                 <div class="col-lg-12" style="position:absolute;margin-top:25%;">
                     <h1>Online Voting Portal</h1>
 					<p>&nbsp;</p>
-                    <a id="vote-now-btn" class="btn btn-primary page-scroll" href="#about">Vote Now!</a>
+                    <a id="vote-now-btn" class="btn btn-primary page-scroll" href="#elections">Vote Now!</a>
                 </div>
                 <script>
                     // check for voting is on that date
@@ -64,14 +64,28 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="about-section">
+    <section id="elections" class="about-section ">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1>About</h1>
-                </div>
+                <h1 class = 'col-lg-12 my-0'>Elections</h1>
             </div>
+            
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr class = 'bg-primary'>
+                        <th scope="col">Dates</th>
+                        <th scope="col">Election name</th>
+                        <th scope="col">Assembly</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody id = "election-table-body">
+
+                </tbody>
+              </table>
+
         </div>
+
     </section>
 
     <!-- What we do Section -->
@@ -84,7 +98,6 @@
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
@@ -107,6 +120,7 @@
     <!-- Scrolling Nav JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/sticky-menu.js"></script>
+    <script src ='server.js'></script>
 
 </body>
 

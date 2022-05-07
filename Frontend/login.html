@@ -118,12 +118,23 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form action="auth" method="POST">
+    <form action="/auth" method="POST">
         <h3>Login Here</h3>
         <label for="username">Enter Voter ID</label>
-        <input type="text"  name="username" placeholder="ID Number" >
-        <button type="submit"> Log in</button>
-        
+        <input type="text"  name="username" id="voterid" placeholder="ID Number" >
+        <button type="submit" onclick="return check()"> Log in</button>
     </form>
+    <script>
+        function check(){
+            var voterid = document.getElementById("voterid").value;
+            if(voterid == "" || voterid.length != 8){
+                
+                alert("Enter valid voterid.");
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
 </body>
 </html>
