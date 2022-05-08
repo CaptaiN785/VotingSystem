@@ -45,6 +45,7 @@ if(!isset($_SESSION["loggedInVoterId"])){ // Checking if user is logged in
                         <a class="page-scroll" href="#contact">Contact us</a>
                     </li>
                 </ul>
+                <a href ="logout.php" style="float:right;margin-top:10px;" class = "page-scroll btn btn-danger">Logout</a>
             </div>	<!-- .navbar-collapse -->
         </div>		<!-- .container -->
     </nav>

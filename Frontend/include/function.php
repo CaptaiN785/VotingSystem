@@ -78,7 +78,42 @@ function get_election_details($voterid){
     return $list;
 }
 
-get_election_details(29281912);
+// get_election_details(29281912);
 
+function get_candidate_details($eid){
+    $conn = get_connection();
+    $sql = "SELECT C.CID, C.SYMBOL, V.NAME FROM CANDIDATE as C, VOTER as V WHERE C.VID = V.VOTERID AND C.EID = $eid ORDER BY CID";
+
+    $result = $conn->query($sql);
+    
+    $list = array();
+
+    if(mysqli_num_rows($result) > 0){   
+        $i = 1;
+        while($row = mysqli_fetch_assoc($result)){
+            $array = array(
+                "sl" => $i,
+                "cid" => $row["CID"],
+                "name" => $row["NAME"],
+                "symbol" => $row["SYMBOL"]
+            );
+            $i++;
+            array_push($list, $array);
+        }
+    }
+    return $list;
+}
+
+// get_candidate_details(1);
+function get_voter_image($voterid){
+    $conn = get_connection();
+    $sql = "SELECT IMAGE FROM PHOTO WHERE VOTERID = $voterid";
+
+    $result = $conn->query($sql);
+    $row = mysqli_fetch_assoc($result);
+    // file_put_contents("../voter.png", $row["IMAGE"]);
+    echo $row["IMAGE"];
+}
+get_voter_image(29281912);
 ?>
 

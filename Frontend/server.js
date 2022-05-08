@@ -1,61 +1,31 @@
-var mysql = require('mysql');
-var express = require('express');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var path = require('path');
+var VIDEO = document.getElementById("video");
+var verification_container = document.getElementById("verification_container");
 
-var connection = mysql.createConnection({
-    host: 'localhost',//host name
-    user: 'root',// username of database
-    password: 'Mukesh@2001',//Password of database
-    database : 'votingsystem'//Database name
-});
+function playVideo(){
+    navigator.getUserMedia({video:{}}, (stream)=>{
+        VIDEO.srcObject = stream;
+    }, (err)=>{
+        console.log(err);
+    });
+}
 
-var app = express();
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-}));
-app.use(bodyParser.urlencoded({extended : true}));
-app.use(bodyParser.json());
-app.use(express.static(__dirname));
-
-// app.set("view engine", "pug");  // install pug using this command
-
-app.get('/', function(request, response) {
-    response.sendFile(path.join(__dirname + '/login.html'));
-});
-
-app.post('/auth', function(request, response) {
-    var username = request.body.username;
-    console.log(username)
-    if (username) {
-        var AID = -1;
-        connection.query('SELECT * FROM voter WHERE VOTERID = ?', [username], function(error, results, fields) {
-            if (results.length > 0) {
-                request.session.loggedin = true;
-                request.session.username = username;
-                AID = results[0].AID;
-
-                // var query = "select * from election where Date >= current_date() and AID = ?";
-                // var Election_data = null;
-                // connection.query(query,[AID], function(error, election_data, fields){
-                //     if(error) throw err;
-                //     Election_data = election_data;
-                // });
-                // response.render(path.join(__dirname, "home"));
-                // response.redirect('home.html')
-                response.render(path.join(__dirname, 'home.html'))
-                console.log("home page should appear.");
-            }else {
-                response.send("<script language=javascript>alert('Invalid Voter ID'); history.back();</script>");
-            }
-            response.end();
-        });
+function whiteall(){
+    var list = document.querySelectorAll(".vote_btn");
+    for(let i=0; i<list.length; i++){
+        list[i].parentNode.parentNode.style.background="#fff";
     }
+}
+function count_me(cid){
+    whiteall();
+    document.getElementById("cid_number").value = cid;
+    document.getElementById(cid).parentNode.parentNode.style.background="#0f0";
+    verification_container.style.display = "block";
+    playVideo();
+}
+
+document.querySelector("#snap").addEventListener("click", function(){   
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(VIDEO, 0, 38, 300, 225);
+    document.getElementById("submit_vote").style.display = "inline-block";
 });
-
-app.listen(5000);
-
-//    http://localhost:5000/   30876753
