@@ -118,11 +118,11 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form action="/auth" method="POST">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
         <h3>Login Here</h3>
         <label for="username">Enter Voter ID</label>
-        <input type="text"  name="username" id="voterid" placeholder="ID Number" >
-        <button type="submit" onclick="return check()"> Log in</button>
+        <input type="text"  name="voterid" placeholder="ID Number" >
+        <button type="submit" onclick="return check()" name ="login"> Log in</button>
     </form>
     <script>
         function check(){
@@ -136,5 +136,32 @@ button{
             }
         }
     </script>
+    <?php include('include/footer.php'); ?>
 </body>
 </html>
+
+<?php
+
+    if(isset($_POST["login"])){
+        include('include/function.php');
+        $voterid = $_POST["voterid"];
+        $validated = validate_user($voterid);
+        if($validated){
+            session_start();
+            $_SESSION["loggedInVoterId"] = $voterid;
+            header("Location: index.php");
+        }else{
+            echo "
+            <script>
+            Swal.fire({
+                position:'top',
+                icon: 'error',
+                title: 'Invalid Voterid',
+                text: 'Please enter valid voter ID and try again.'
+              });
+            </script>
+            ";
+        }
+    }
+
+?>

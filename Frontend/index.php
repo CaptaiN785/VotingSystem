@@ -1,47 +1,14 @@
+<?php
+    $TITLE = "home";
+    include('include/header.php');
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="canonical" href="https://html5-templates.com/" />
-    <title></title>
-    <meta name="description" content="Simplified Bootstrap template with sticky menu">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/sticky-menu.css" rel="stylesheet">
-</head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle menu</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Home</a>
-            </div>
-
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#elections">Elections</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#whatwedo">What We Do</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact us</a>
-                    </li>
-                </ul>
-            </div>	<!-- .navbar-collapse -->
-        </div>		<!-- .container -->
-    </nav>
+    $VOTERID = $_SESSION["loggedInVoterId"];
+    if(isset($_GET["eid"])){
+        $_SESSION["eid"] = $_GET["eid"];
+        header("Location:vote.php");
+    }
+    include('include/function.php');
+?>
     <!-- Welcome   -->
     <section id="welcome" class="welcome-section">
         <div class="container">
@@ -63,9 +30,6 @@
             </div>
         </div>
     </section>
-    <?php
-    include('function.php');
-?>
     <!-- About -->
     <section id="elections" class="about-section ">
         <div class="container">
@@ -83,10 +47,33 @@
                     </tr>
                 </thead>
                 <tbody id = "election-table-body">
-
+                    <?php
+                        $election = get_election_details($VOTERID); // Getting all election information related to this voters
+                        if(count($election) > 0){
+                            for($i=0; $i<count($election); $i++){ // Priniting the detail in table forms
+                               echo '
+                                <tr>
+                                    <td>'.$election[$i]["date"].'</td>
+                                    <td>'.$election[$i]["name"].'</td>
+                                    <td>'.$election[$i]["assembly"].'</td>';
+                                
+                                if($election[$i]["active"]){
+                                    echo '<td><a href = "/?eid='.$election[$i]["eid"].'" class = "btn btn-success")>Vote now</a></td>';
+                                }
+                                echo '
+                                </tr>
+                               ';
+                            }
+                        }else{
+                            echo '
+                            <tr>    
+                                <td colspan="4">There is no election in your assembly.</td>
+                            </tr>
+                            ';
+                        }
+                    ?>
                 </tbody>
               </table>
-
         </div>
 
     </section>
@@ -113,18 +100,8 @@
     </section>
 	
 	<a id="back2Top" title="Back to top" href="#">&#10148;</a>
-	
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Scrolling Nav JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/sticky-menu.js"></script>
-    <script src ='server.js'></script>
-
-</body>
-
-</html>
+<?php
+    include('include/footer.php');
+?>
