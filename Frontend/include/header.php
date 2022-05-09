@@ -4,8 +4,6 @@ if(!isset($_SESSION["loggedInVoterId"])){ // Checking if user is logged in
     header("Location:login.php");
 }
 ?>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,7 +26,7 @@ if(!isset($_SESSION["loggedInVoterId"])){ // Checking if user is logged in
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="../">Home</a>
+                <a class="navbar-brand page-scroll" href="index.php">Home</a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">

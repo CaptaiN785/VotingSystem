@@ -121,14 +121,13 @@ button{
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
         <h3>Login Here</h3>
         <label for="username">Enter Voter ID</label>
-        <input type="text"  name="voterid" placeholder="ID Number" >
+        <input type="text"  name="voterid" id ="voterid" placeholder="ID Number" >
         <button type="submit" onclick="return check()" name ="login"> Log in</button>
     </form>
     <script>
         function check(){
             var voterid = document.getElementById("voterid").value;
             if(voterid == "" || voterid.length != 8){
-                
                 alert("Enter valid voterid.");
                 return false;
             }else{
@@ -149,6 +148,9 @@ button{
         if($validated){
             session_start();
             $_SESSION["loggedInVoterId"] = $voterid;
+            $_SESSION["loggedInVoterName"] = $validated["NAME"];
+            $_SESSION["loggedInVoterAid"] = $validated["AID"];
+            $_SESSION["loggedInVoterImage"] = get_voter_image($voterid);
             header("Location: index.php");
         }else{
             echo "

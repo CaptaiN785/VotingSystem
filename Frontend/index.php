@@ -1,11 +1,10 @@
 <?php
     $TITLE = "home";
     include('include/header.php');
-
     $VOTERID = $_SESSION["loggedInVoterId"];
     if(isset($_GET["eid"])){
         $_SESSION["eid"] = $_GET["eid"];
-        header("Location:vote.php");
+        header("Location: vote.php");
     }
     include('include/function.php');
 ?>
@@ -50,6 +49,7 @@
                     <?php
                         $election = get_election_details($VOTERID); // Getting all election information related to this voters
                         if(count($election) > 0){
+                            $_SESSION["election_name"] = $election[0]["election_name"];
                             for($i=0; $i<count($election); $i++){ // Priniting the detail in table forms
                                echo '
                                 <tr>
@@ -58,7 +58,7 @@
                                     <td>'.$election[$i]["assembly"].'</td>';
                                 
                                 if($election[$i]["active"]){
-                                    echo '<td><a href = "/?eid='.$election[$i]["eid"].'" class = "btn btn-success")>Vote now</a></td>';
+                                    echo '<td><a href = "index.php?eid='.$election[$i]["eid"].'" class = "btn btn-success")>Vote now</a></td>';
                                 }
                                 echo '
                                 </tr>
