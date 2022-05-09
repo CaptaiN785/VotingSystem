@@ -129,9 +129,11 @@ class AddVoterC(QWidget):
         Assembly = self.assembly.currentText()
         Pin = self.pin.currentText()
         Image = self.Image
-        if(Database.add_voter(Name, Phone, Email, DOB, Assembly, Pin, Image)):
-            showWarning("Voter is added.", text="Sucess")
+        status, info = Database.add_voter(Name, Phone, Email, DOB, Assembly, Pin, Image)
+        if(status):
+            save_image(info["voterid"], info["name"], info["phone"], info["email"], DOB, Assembly, Pin)
             self.reset()
+            showWarning("Voter is added.", text="Sucess")
         else:
             showWarning("Error in adding voter.")
         
@@ -166,3 +168,23 @@ def showWarning(message, text="Warning"):
     msg.setWindowTitle(text)
     msg.setText(message)
     x = msg.exec()
+
+def save_image(voterid, name, mobile, email, dob, assembly, pin):
+    background = PIL.Image.open('background.png')
+    screen = ImageDraw.Draw(background)
+
+    my_font = ImageFont.truetype('calibri.ttf', 20)
+    big_font = ImageFont.truetype('calibri.ttf', 60)
+
+    screen.text((100, 20), "Voter information", font=big_font, fill=(0, 0, 0))
+
+    screen.text((30, 100), "VoterID  : {}".format(voterid),font=my_font, fill =(0, 0, 0))
+    screen.text((30, 130), "Name     : {}".format(name),font=my_font, fill =(0, 0, 0))
+    screen.text((30, 160), "Mobile   : {}".format(mobile),font=my_font, fill =(0, 0, 0))
+    screen.text((30, 190), "Email   : {}".format(email),font=my_font, fill =(0, 0, 0))
+    screen.text((30, 220), "DOB     : {}".format(dob),font=my_font, fill =(0, 0, 0))
+    screen.text((30, 250), "Assembly: {}".format(assembly),font=my_font, fill =(0, 0, 0))
+    screen.text((30, 280), "PIN     : {}".format(pin),font=my_font, fill =(0, 0, 0))
+
+    desktop = pathlib.Path.home() / 'Desktop'
+    background.save(os.path.join(desktop, name+".png"))

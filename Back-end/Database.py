@@ -231,9 +231,9 @@ def add_voter(name, phone, email, dob, assembly, pin, image):
         conn.close()
     except Exception as e:
         print("Error while adding voter.", e.with_traceback())
-        return False
+        return False, {}
 
-    return True
+    return True, get_voter_info(voterid)
 
 def get_voter_info(voterid):
     try:

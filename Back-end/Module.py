@@ -3,3 +3,8 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 import sys
+import PIL
+from PIL import ImageDraw
+from PIL import ImageFont
+import pathlib
+import os
