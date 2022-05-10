@@ -128,7 +128,56 @@ function make_vote($voterid, $cid, $election_name){
         return -1;
     }
 }
+function get_previous_election_details($aid){
 
+    $conn = get_connection();
+    $sql = "SELECT * FROM ELECTION WHERE DATE <= CURDATE() AND AID = $aid";
+    $result = $conn->query($sql);
+    $conn->close();
+    $list = array();
+
+    if(mysqli_num_rows($result)> 0){
+
+        while($row = mysqli_fetch_assoc($result)){
+            $array = array(
+                "eid" => $row["EID"],
+                "name" => $row["NAME"],
+                "post" => $row["POST"],
+                "date" => $row["DATE"]
+            );
+            array_push($list, $array);
+        }   
+    }
+    return $list;
+}
+// get_previous_election_details(300003);
+
+function get_election_result($election_name, $eid){
+    
+    $conn = get_connection();
+    $sql = "SELECT CID, NAME FROM CANDIDATE, VOTER WHERE VID = VOTERID AND EID = $eid";
+    $result = $conn->query($sql);
+
+    $list = array();
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            
+            $sql = "SELECT COUNT(CID) AS VOTE FROM $election_name WHERE CID = ".$row['CID']."";
+            $res = $conn->query($sql);
+            $row_name = mysqli_fetch_assoc($res);
+            $vote = $row_name['VOTE'];
+            $array = array(
+                "name" => $row["NAME"],
+                "vote" => $vote
+            );
+            array_push($list, $array);
+        }   
+    }
+    $conn->close();
+    return $list;   
+}
+
+// get_election_result("prime_2022", 1);
 
 ?>
 

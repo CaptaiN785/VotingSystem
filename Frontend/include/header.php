@@ -37,7 +37,7 @@ if(!isset($_SESSION["loggedInVoterId"])){ // Checking if user is logged in
                         <a class="page-scroll" href="#elections">Elections</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#whatwedo">What We Do</a>
+                        <a class="page-scroll" href="#whatwedo">Results</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact us</a>
