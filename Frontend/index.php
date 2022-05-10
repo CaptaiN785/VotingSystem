@@ -18,14 +18,6 @@
 					<p>&nbsp;</p>
                     <a id="vote-now-btn" class="btn btn-primary page-scroll" href="#elections">Vote Now!</a>
                 </div>
-                <script>
-                    // check for voting is on that date
-                    if(true){
-                        document.getElementById("vote-now-btn").style.display = "inline-block";
-                    }else{
-                        document.getElementById("vote-now-btn").style.display = "none";
-                    }
-                </script>
             </div>
         </div>
     </section>
@@ -148,10 +140,8 @@
                                     <?php
                                 }
                             ?>
-                            
-
                         </tbody>
-                    </table>
+                    </table>    
                     <?php
                 }
             }

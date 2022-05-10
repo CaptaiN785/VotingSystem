@@ -179,5 +179,16 @@ function get_election_result($election_name, $eid){
 
 // get_election_result("prime_2022", 1);
 
+function get_voter_info($voterid){
+
+    $conn = get_connection();
+    $sql = "SELECT * FROM VOTER WHERE VOTERID = $voterid";
+
+    $result = $conn->query($sql);
+    $result = mysqli_fetch_assoc($result);
+
+    return $result;
+}
+
 ?>
 
