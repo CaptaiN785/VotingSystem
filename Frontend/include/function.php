@@ -100,13 +100,15 @@ function get_candidate_details($eid){
     return $list;
 }
 // get_candidate_details(1);
-function get_voter_image($voterid){
+function get_voter_image($voterid,$flag=false){
     $conn = get_connection();
     $sql = "SELECT IMAGE FROM PHOTO WHERE VOTERID = $voterid";
     $result = $conn->query($sql);
     $row = mysqli_fetch_assoc($result);
+
+    if($flag == true) file_put_contents("voter.png", $row["IMAGE"]);;
+
     return $row["IMAGE"];
-    // file_put_contents("voter.png", $row["IMAGE"]);
     // echo $row["IMAGE"];
 }
 // get_voter_image(97713154);

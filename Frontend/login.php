@@ -150,7 +150,7 @@ button{
             $_SESSION["loggedInVoterId"] = $voterid;
             $_SESSION["loggedInVoterName"] = $validated["NAME"];
             $_SESSION["loggedInVoterAid"] = $validated["AID"];
-            $_SESSION["loggedInVoterImage"] = get_voter_image($voterid);
+            $_SESSION["loggedInVoterImage"] = get_voter_image($voterid, true);
             header("Location: index.php");
         }else{
             echo "
