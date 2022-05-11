@@ -321,7 +321,7 @@ def get_upcoming_election_list():
         conn = get_connection()
         cursor = conn.cursor()
 
-        sql = "SELECT EID, NAME FROM ELECTION WHERE DATE > CURDATE()"
+        sql = "SELECT EID, NAME FROM ELECTION WHERE DATE >= CURDATE()"
         cursor.execute(sql)
         lst = cursor.fetchall()
         cursor.close()
