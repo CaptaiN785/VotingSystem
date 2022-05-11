@@ -69,8 +69,9 @@ class AddCandidateC(QWidget):
     def loadAdditionalUI(self):
         # Taking election name for adding in that election.
         self.electionName, self.electionMap = Database.get_upcoming_election_list()
-        print("Election name",self.electionName)
-        print("election map : ",self.electionMap)
+        if len(self.electionName) == 0:
+            showWarning("There is no election in future.")
+            return
         vid = self.vid.text()
         if not vid.isdigit():
             showWarning("Entered voterid is not valid.")
