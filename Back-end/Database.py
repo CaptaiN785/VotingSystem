@@ -206,7 +206,7 @@ def validate_voter(name, phone, email, dob, assembly, pin, image):
 
 def add_voter(name, phone, email, dob, assembly, pin, image):
     if not validate_voter(name, phone, email, dob, assembly, pin, image):
-        return False
+        return False,{}
     
     try:
         conn = get_connection()
