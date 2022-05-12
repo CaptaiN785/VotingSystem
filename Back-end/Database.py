@@ -1,6 +1,7 @@
 import mysql.connector
 import random
 import DummyEntries
+from datetime import date
 
 host = "localhost"
 user = "root"
@@ -407,7 +408,21 @@ def get_pin_list():
     except Exception as e:
         print("Error while fetching pin list.")
 
+def get_upcoming_election_table_detail():
+    try:
+        conn = get_connection()
+        mycursor = conn.cursor()
+        sql = "SELECT E.POST, E.DATE, A.NAME FROM ELECTION E, ASSEMBLY A WHERE E.DATE >= CURDATE() AND E.AID = A.AID"
+        mycursor.execute(sql)
+        ls = mycursor.fetchall()
 
+        data = []
+        for X in ls:
+            data.append([X[0], str(date.strftime(X[1], '%d-%m-%Y')), X[2]])
+    except:
+        print("Error while fetching the election table details.")
+
+    return data
 
 if __name__ == '__main__':
     # get_voter_info(76736087)
@@ -416,4 +431,5 @@ if __name__ == '__main__':
     # name, eid = get_past_election_list()
     # print(name, eid)
     # print(get_next_symbol(2))
-    print(get_upcoming_election_list())
+    # print(get_upcoming_election_list())
+    print(get_upcoming_election_table_detail())
