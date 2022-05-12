@@ -26,7 +26,7 @@
     }
 ?>
 <div class="container">
-    <h2 class = "header text-center" >Election post : </h2>
+    <h2 class = "header text-center" >Election Candidates</h2>
     <table class="table table-hover table-bordered">
         <thead>
             <tr class = 'bg-primary'>
