@@ -95,19 +95,6 @@ class Ui_MainWindow(object):
         self.btn_Home.setMinimumSize(QtCore.QSize(70, 40))
         self.btn_Home.setIcon(QIcon("../images/homeicon.png"))
         self.btn_Home.setIconSize(QtCore.QSize(24, 24))
-        self.btn_Home.setStyleSheet("QPushButton {"
-                                        "color: rgb(255, 255, 255);"
-                                        "text-align: left;"
-                                        "font-size: 18px;"
-                                        "height: 48px;"
-                                        "border: 0px solid;"
-                                        "font-family:cambria;"
-                                        "padding-left: 20px; padding-right: 3px;"
-                                        "padding-top: 1px; padding-bottom: 1px;"
-                                        "}"
-                                        "QPushButton:hover {"
-                                        "    background-color: rgb(20, 80, 140);"
-                                        "}")
         self.btn_Home.setObjectName("btn_Home")
         self.verticalLayout_3.addWidget(self.btn_Home)
 
@@ -117,19 +104,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.btn_AddVoter)
         self.btn_AddVoter.setIcon(QIcon("../images/addmember.png"))
         self.btn_AddVoter.setMinimumSize(QtCore.QSize(70, 40))
-        self.btn_AddVoter.setStyleSheet("QPushButton {"
-                                        "color: rgb(255, 255, 255);"
-                                        "text-align: left;"
-                                        "font-size: 18px;"
-                                        "height: 48px;"
-                                        "border: 0px solid;"
-                                        "font-family:cambria;"
-                                        "padding-left: 20px; padding-right: 3px;"
-                                        "padding-top: 1px; padding-bottom: 1px;"
-                                        "}"
-                                        "QPushButton:hover {"
-                                        "    background-color: rgb(20, 80, 140);"
-                                        "}")
         self.btn_AddVoter.setObjectName("btn_AddVoter")
         self.verticalLayout_3.addWidget(self.btn_AddVoter)
 
@@ -137,19 +111,6 @@ class Ui_MainWindow(object):
         self.btn_AddCandidate = QtWidgets.QPushButton("     Add Candidate")
         self.btn_AddCandidate.setMinimumSize(QtCore.QSize(70, 40))
         self.btn_AddCandidate.setIconSize(QtCore.QSize(24, 24))
-        self.btn_AddCandidate.setStyleSheet("QPushButton {"
-                                        "color: rgb(255, 255, 255);"
-                                        "text-align: left;"
-                                        "font-size: 18px;"
-                                        "height: 48px;"
-                                        "border: 0px solid;"
-                                        "font-family:cambria;"
-                                        "padding-left: 20px; padding-right: 3px;"
-                                        "padding-top: 1px; padding-bottom: 1px;"
-                                        "}"
-                                        "QPushButton:hover {"
-                                        "    background-color: rgb(20, 80, 140);"
-                                        "}")
         self.btn_AddCandidate.setObjectName("btn_AddCandidate")
         self.verticalLayout_3.addWidget(self.btn_AddCandidate)
         self.btn_AddCandidate.setIcon(QIcon("../images/plusicon.png"))
@@ -158,19 +119,6 @@ class Ui_MainWindow(object):
         self.btn_ElectionDate = QtWidgets.QPushButton("     Election Date")
         self.btn_ElectionDate.setIconSize(QtCore.QSize(24, 24))
         self.btn_ElectionDate.setMinimumSize(QtCore.QSize(70, 40))
-        self.btn_ElectionDate.setStyleSheet("QPushButton {"
-                                        "color: rgb(255, 255, 255);"
-                                        "text-align: left;"
-                                        "font-size: 18px;"
-                                        "height: 48px;"
-                                        "border: 0px solid;"
-                                        "font-family:cambria;"
-                                        "padding-left: 20px; padding-right: 3px;"
-                                        "padding-top: 1px; padding-bottom: 1px;"
-                                        "}"
-                                        "QPushButton:hover {"
-                                        "    background-color: rgb(20, 80, 140);"
-                                        "}")
         self.btn_AddCandidate.setObjectName("btn_ElectionDate")
         self.verticalLayout_3.addWidget(self.btn_ElectionDate)
         self.btn_ElectionDate.setIcon(QIcon("../images/tick.png"))
@@ -180,21 +128,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.btn_Analytics)
         self.btn_Analytics.setIconSize(QtCore.QSize(24, 24))
         self.btn_Analytics.setMinimumSize(QtCore.QSize(70, 40))
-        # self.btn_Home.setText(u"\u2261")
         self.btn_Analytics.setIcon(QIcon("../images/analytics.png"))
-        self.btn_Analytics.setStyleSheet("QPushButton {"
-                                        "color: rgb(255, 255, 255);"
-                                        "text-align: left;"
-                                        "font-size: 18px;"
-                                        "height: 48px;"
-                                        "border: 0px solid;"
-                                        "font-family:cambria;"
-                                        "padding-left: 20px; padding-right: 3px;"
-                                        "padding-top: 1px; padding-bottom: 1px;"
-                                        "}"
-                                        "QPushButton:hover {"
-                                        "    background-color: rgb(20, 80, 140);"
-                                        "}")
         self.btn_Home.setObjectName("btn_Analytics")
         self.verticalLayout_3.addWidget(self.btn_Analytics)
         self.verticalLayout_3.addStretch(1)
@@ -232,3 +166,155 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.Analytics)
 
         # self.verticalLayout.setObjectName("verticalLayout")
+
+    def clean(self):
+        self.btn_Home.setStyleSheet("QPushButton {"
+                                    "color: rgb(255, 255, 255);"
+                                    "text-align: left;"
+                                    "font-size: 18px;"
+                                    "height: 48px;"
+                                    "border: 0px solid;"
+                                    "font-family:cambria;"
+                                    "padding-left: 20px; padding-right: 3px;"
+                                    "padding-top: 1px; padding-bottom: 1px;"
+                                    "}"
+                                    "QPushButton:hover {"
+                                    "    background-color: rgb(20, 80, 140);"
+                                    "}")
+        self.btn_AddVoter.setStyleSheet("QPushButton {"
+                                        "color: rgb(255, 255, 255);"
+                                        "text-align: left;"
+                                        "font-size: 18px;"
+                                        "height: 48px;"
+                                        "border: 0px solid;"
+                                        "font-family:cambria;"
+                                        "padding-left: 20px; padding-right: 3px;"
+                                        "padding-top: 1px; padding-bottom: 1px;"
+                                        "}"
+                                        "QPushButton:hover {"
+                                        "    background-color: rgb(20, 80, 140);"
+                                        "}")
+        self.btn_AddCandidate.setStyleSheet("QPushButton {"
+                                            "color: rgb(255, 255, 255);"
+                                            "text-align: left;"
+                                            "font-size: 18px;"
+                                            "height: 48px;"
+                                            "border: 0px solid;"
+                                            "font-family:cambria;"
+                                            "padding-left: 20px; padding-right: 3px;"
+                                            "padding-top: 1px; padding-bottom: 1px;"
+                                            "}"
+                                            "QPushButton:hover {"
+                                            "    background-color: rgb(20, 80, 140);"
+                                            "}")
+        self.btn_ElectionDate.setStyleSheet("QPushButton {"
+                                            "color: rgb(255, 255, 255);"
+                                            "text-align: left;"
+                                            "font-size: 18px;"
+                                            "height: 48px;"
+                                            "border: 0px solid;"
+                                            "font-family:cambria;"
+                                            "padding-left: 20px; padding-right: 3px;"
+                                            "padding-top: 1px; padding-bottom: 1px;"
+                                            "}"
+                                            "QPushButton:hover {"
+                                            "    background-color: rgb(20, 80, 140);"
+                                            "}")
+        self.btn_Analytics.setStyleSheet("QPushButton {"
+                                         "color: rgb(255, 255, 255);"
+                                         "text-align: left;"
+                                         "font-size: 18px;"
+                                         "height: 48px;"
+                                         "border: 0px solid;"
+                                         "font-family:cambria;"
+                                         "padding-left: 20px; padding-right: 3px;"
+                                         "padding-top: 1px; padding-bottom: 1px;"
+                                         "}"
+                                         "QPushButton:hover {"
+                                         "    background-color: rgb(20, 80, 140);"
+                                         "}")
+
+    def button1(self):
+        self.stackedWidget.setCurrentWidget(self.Home)
+        self.clean()
+        self.btn_Home.setStyleSheet("QPushButton {"
+                                    "color: rgb(255, 255, 255);"
+                                    "text-align: left;"
+                                    "font-size: 18px;"
+                                    "height: 48px;"
+                                    "border-width: 0px;"
+                                    "font-family:cambria;"
+                                    "padding-left: 20px; padding-right: 3px;"
+                                    "padding-top: 1px; padding-bottom: 1px;"
+                                    "}"
+                                    "QPushButton:hover {"
+                                    "    background-color: rgb(20, 80, 140);"
+                                    "}")
+
+    def button2(self):
+        self.stackedWidget.setCurrentWidget(self.AddVoter)
+        self.clean()
+        self.btn_AddVoter.setStyleSheet("QPushButton {"
+                                        "color: rgb(255, 255, 255);"
+                                        "text-align: left;"
+                                        "font-size: 18px;"
+                                        "height: 48px;"
+                                        "border-width: 0px;"
+                                        "font-family:cambria;"
+                                        "padding-left: 20px; padding-right: 3px;"
+                                        "padding-top: 1px; padding-bottom: 1px;"
+                                        "}"
+                                        "QPushButton:hover {"
+                                        "    background-color: rgb(20, 80, 140);"
+                                        "}")
+
+    def button3(self):
+        self.stackedWidget.setCurrentWidget(self.AddCandidate)
+        self.clean()
+        self.btn_AddCandidate.setStyleSheet("QPushButton {"
+                                            "color: rgb(255, 255, 255);"
+                                            "text-align: left;"
+                                            "font-size: 18px;"
+                                            "height: 48px;"
+                                            "border-width: 0px;"
+                                            "font-family:cambria;"
+                                            "padding-left: 20px; padding-right: 3px;"
+                                            "padding-top: 1px; padding-bottom: 1px;"
+                                            "}"
+                                            "QPushButton:hover {"
+                                            "    background-color: rgb(20, 80, 140);"
+                                            "}")
+
+    def button4(self):
+        self.stackedWidget.setCurrentWidget(self.ElectionDate)
+        self.clean()
+        self.btn_ElectionDate.setStyleSheet("QPushButton {"
+                                            "color: rgb(255, 255, 255);"
+                                            "text-align: left;"
+                                            "font-size: 18px;"
+                                            "height: 48px;"
+                                            "border-width: 0px;"
+                                            "font-family:cambria;"
+                                            "padding-left: 20px; padding-right: 3px;"
+                                            "padding-top: 1px; padding-bottom: 1px;"
+                                            "}"
+                                            "QPushButton:hover {"
+                                            "    background-color: rgb(20, 80, 140);"
+                                            "}")
+
+    def button5(self):
+        self.stackedWidget.setCurrentWidget(self.Analytics)
+        self.clean()
+        self.btn_Analytics.clicked.setStyleSheet("QPushButton {"
+                                                 "color: rgb(255, 255, 255);"
+                                                 "text-align: left;"
+                                                 "font-size: 18px;"
+                                                 "height: 48px;"
+                                                 "border-width: 0px;"
+                                                 "font-family:cambria;"
+                                                 "padding-left: 20px; padding-right: 3px;"
+                                                 "padding-top: 1px; padding-bottom: 1px;"
+                                                 "}"
+                                                 "QPushButton:hover {"
+                                                 "    background-color: rgb(20, 80, 140);"
+                                                 "}")

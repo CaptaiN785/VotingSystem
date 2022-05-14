@@ -22,21 +22,20 @@ class MainWindow(QMainWindow):
         self.setWindowTitle('Login')
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.clean()
+
 
         def toggleMenu(self, maxWidth, enable):
             if enable:
-
                 # GET WIDTH
                 width = self.ui.frame_left_menu.width()
                 maxExtend = maxWidth
                 standard = 70
-
                 # SET MAX WIDTH
                 if width == 70:
                     widthExtended = maxExtend
                 else:
                     widthExtended = standard
-
                 # ANIMATION
                 self.animation = QPropertyAnimation(self.ui.frame_left_menu, b"minimumWidth")
                 self.animation.setDuration(400)
@@ -44,30 +43,18 @@ class MainWindow(QMainWindow):
                 self.animation.setEndValue(widthExtended)
                 self.animation.start()
 
-        ## TOGGLE/BURGUER MENU
+
         ########################################################################
         self.ui.Btn_Toggle.clicked.connect(lambda: toggleMenu(self, 190, True))
 
-        ## PAGES
-        ########################################################################
-        # PAGE 1
-        self.ui.btn_Home.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.Home))
-        # PAGE 2
-        self.ui.btn_AddVoter.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.AddVoter))
-        # PAGE 3
-        self.ui.btn_AddCandidate.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.AddCandidate))
-        # PAGE 4
-        self.ui.btn_ElectionDate.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.ElectionDate))
-        # Page 5
-        self.ui.btn_Analytics.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.Analytics))
-        ## SHOW ==> MAIN WINDOW
-        ########################################################################
+        self.ui.btn_Home.clicked.connect(self.ui.button1)
+        self.ui.btn_AddVoter.clicked.connect(self.ui.button2)
+        self.ui.btn_AddCandidate.clicked.connect(self.ui.button3)
+        self.ui.btn_ElectionDate.clicked.connect(self.ui.button4)
+        self.ui.btn_Analytics.clicked.connect(self.ui.button5)
         self.show()
-        ## ==> END ##
 
-        
-       
-        
+
         self.Login_panel = Login(self)
         self.login_btn = self.Login_panel.login_btn
         self.setCentralWidget(self.Login_panel)
