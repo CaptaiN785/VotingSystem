@@ -4,6 +4,7 @@ from AddVoter import *
 from AddCandidate import *
 from ElectionDate import *
 from Analytics import *
+from Login import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -230,13 +231,4 @@ class Ui_MainWindow(object):
         self.Analytics.setObjectName("Analytics")
         self.stackedWidget.addWidget(self.Analytics)
 
-        ########################### ADD STACKED WIDGET ####################
-        self.verticalLayout_5.addWidget(self.stackedWidget)
-        self.horizontalLayout_2.addWidget(self.frame_pages)
-        self.verticalLayout.addWidget(self.Content)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.stackedWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-
-        self.verticalLayout.setObjectName("verticalLayout")
+        # self.verticalLayout.setObjectName("verticalLayout")

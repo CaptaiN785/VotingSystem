@@ -1,8 +1,10 @@
+import this
 from Module import *
 from Home import *
 from AddCandidate import *
 from AddVoter import *
 import Database
+from Login import *
 
 import ElectionDate
 import Analytics
@@ -62,6 +64,36 @@ class MainWindow(QMainWindow):
         ########################################################################
         self.show()
         ## ==> END ##
+
+        
+       
+        
+        self.Login_panel = Login(self)
+        self.login_btn = self.Login_panel.login_btn
+        self.setCentralWidget(self.Login_panel)
+        self.login_btn.clicked.connect(lambda: self.check_login())
+
+    def check_login(self):
+        if(self.Login_panel.get_username_password() == ("admin", "admin")):
+            self.login_success()
+        else:
+            showWarning("Invalid username or password!")
+
+    def login_success(self):
+        ########################### ADD STACKED WIDGET ####################
+        self.ui.verticalLayout_5.addWidget(self.ui.stackedWidget)
+        self.ui.horizontalLayout_2.addWidget(self.ui.frame_pages)
+        self.ui.verticalLayout.addWidget(self.ui.Content)
+        self.setCentralWidget(self.ui.centralwidget)
+        self.ui.stackedWidget.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(self)
+
+def showWarning(message, text="Warning"):
+    msg = QMessageBox()
+    msg.setWindowIcon(QIcon('../images/logo.png'))
+    msg.setWindowTitle(text)
+    msg.setText(message)
+    x = msg.exec()
 
 
 try:
