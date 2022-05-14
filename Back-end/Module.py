@@ -8,3 +8,7 @@ from PIL import ImageDraw
 from PIL import ImageFont
 import pathlib
 import os
+from datetime import date
+import mysql.connector
+import random
+import operator

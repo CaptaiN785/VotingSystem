@@ -73,9 +73,6 @@ class AddCandidateC(QWidget):
     def loadAdditionalUI(self):
         # Taking election name for adding in that election.
         self.electionName, self.electionMap = Database.get_upcoming_election_list()
-        if len(self.electionName) == 0:
-            showWarning("There is no election in future.")
-            return
         voterid = self.vid.text().strip()
         if not voterid.isdigit():
             showWarning("Entered voter ID is not valid.")
@@ -86,6 +83,10 @@ class AddCandidateC(QWidget):
             showWarning("No record found.")
             return
         
+        if len(self.electionName) == 0:
+            showWarning("There is no election in future.")
+            return
+
         self.vid.setEnabled(False)
         self.searchBtn.hide()
 

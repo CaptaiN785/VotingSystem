@@ -1,7 +1,5 @@
-import mysql.connector
-import random
 import DummyEntries
-from datetime import date
+from Module import *
 
 host = "localhost"
 user = "root"
@@ -439,6 +437,7 @@ def get_result(eid, table_name):
             mycursor.execute(sql)
             ls = mycursor.fetchone()
             result.append([ls[0], ls[1]])
+        result = sorted(result,key=operator.itemgetter(0), reverse=True)
     except:
         print("Error while fetching result")
 
