@@ -9,12 +9,12 @@
     include('include/function.php');
 ?>
     <!-- Welcome   -->
-    <section id="welcome" class="welcome-section">
+    <section id="welcome" class="welcome-section" style="background:url('../images/bgimage.jpg') no-repeat;background-size:cover;">
         <div class="container">
             <div class="row" style="position:relative;"> 
                 <!-- Below section will be displayed only when there is date of vote. -->
                 <div class="col-lg-12" style="position:absolute;margin-top:25%;">
-                    <h1>Online Voting Portal</h1>
+                    <h1 style="text-shadow:0 0 5px #fff;font-weight:bold;">Online Voting Portal</h1>
 					<p>&nbsp;</p>
                     <a id="vote-now-btn" class="btn btn-primary page-scroll" href="#elections">Vote Now!</a>
                 </div>
