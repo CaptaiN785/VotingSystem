@@ -14,7 +14,7 @@ class ElectionDate(QWidget):
 
         self.header = QLabel("Set Election Date")
         self.header.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        self.header.setStyleSheet("font-size:40px;font-family:cambria;font-weight:bold;")
+        self.header.setStyleSheet("font-size:40px;font-family:cambria;font-weight:bold;color: #fff;")
         self.layout.addRow(self.header)
         self.setContentsMargins(100, 30, 100, 30)
 
@@ -44,32 +44,40 @@ class ElectionDate(QWidget):
         self.layout.addRow(self.submit)
 
         self.setStyleSheet("""
-            QLabel{
-                font-size:18px;
-                color:'#fff';
-                margin-top:20px;
-            }
-            QLineEdit,QDateEdit, QComboBox{
-                margin-top:20px;
-                padding:10px 20px;
-                font-size:16px;
-                border:2px solid '#fff';
-                max-width:400px;
-            }
-            QPushButton{
-                padding:10px 30px;
-                margin-top:40px;
-                background:'#fff';
-                color:'#0400c4';
-                border:2px solid '#0400c4';
-                border-radius:20px;
-                font-size:16px;
-            }
-            QPushButton:hover{
-                background:'#0400c4';
-                color:'#fff';
-            }
-        """)
+                  QLineEdit{
+                      padding:10px 20px;
+                      font-size:16px;
+                      color:'#fff';
+                      border:2px solid '#fff';
+                      margin-top:20px;
+                      max-width:400px;
+                  }
+                  QLabel{
+                      font-size:18px;
+                      color:'#fff';
+                      margin-top:20px;
+                  }
+                  QPushButton{
+                      font-size:16px;
+                      padding:10px;
+                      max-width:150px;
+                      color: rgb(255, 255, 255);
+                      border-radius:20px;
+                      margin-top:20px;
+                      background-color: rgb(35, 35, 35);
+                  }
+                  QPushButton:hover{
+                          background-color: rgb(19, 81, 143) 
+                          }
+                  QComboBox{
+                      font-size:16px;
+                      padding:10px 20px;
+                      color:'#fff';
+                      border:2px solid '#fff';
+                      margin-top:20px;
+                      max-width:400px;
+                  }
+              """)
     
     def add_election(self):
         print("inside add electio.")
