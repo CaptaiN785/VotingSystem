@@ -282,10 +282,10 @@ def get_voter_photo(voterid):
         cursor.execute(sql)
         image = cursor.fetchone()[0]
         # print(image)
-        with open('voter.png', 'wb') as file:
+        with open('../images/voter.png', 'wb') as file:
             file.write(image)
         
-        return "voter.png"
+        return "../images/voter.png"
 
     except Exception as e:
         print("Error while fetching image of voter.")
