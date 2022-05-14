@@ -170,7 +170,7 @@ def showWarning(message, text="Warning"):
     x = msg.exec()
 
 def save_image(voterid, name, mobile, email, dob, assembly, pin):
-    background = PIL.Image.open('background.png')
+    background = PIL.Image.open('../images/background.png')
     screen = ImageDraw.Draw(background)
 
     my_font = ImageFont.truetype('calibri.ttf', 20)
