@@ -7,8 +7,19 @@ class AddCandidateC(QWidget):
         self.MainWindow = MainWindow
         self.layout = QFormLayout()
         self.setLayout(self.layout)
-        self.setContentsMargins(100, 10, 100, 50)
+        self.setContentsMargins(50, 10, 50, 10)
         self.Image = None
+
+        self.header = QLabel("Add Candidate")
+        self.header.setStyleSheet("""
+                    font-size:40px;
+                    color:'#fff';
+                    font-weight: bold;
+                    font-family:cambria;
+                    margin-bottom:50px;
+                """)
+        self.header.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        self.layout.addRow(self.header)
         self.setStyleSheet("""
                   QLineEdit{
                       padding:10px 20px;
@@ -44,16 +55,13 @@ class AddCandidateC(QWidget):
                       max-width:400px;
                   }
               """)
-        self.layout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 
-        self.heading = QLabel("Add Candidate")
-        self.heading.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        self.heading.setStyleSheet("font-size:40px;font-family:cambria; font-weight:bold;")
-        self.layout.addRow(self.heading)
+
 
         self.vidlabel = QLabel("Enter voter id")
         self.vid = QLineEdit(placeholderText="Voter ID number")
         self.layout.addRow(self.vidlabel, self.vid)
+        self.layout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 
         self.searchBtn = QPushButton(" Search")
 

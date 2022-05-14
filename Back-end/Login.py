@@ -5,9 +5,8 @@ class Login(QWidget):
     def __init__(self, MainWindow):
         super().__init__(MainWindow)
         self.MainWindow = MainWindow
+        MainWindow.setFixedSize(500,500)
         self.setContentsMargins(50, 50, 50, 50)
-        MainWindow.width = 500
-        MainWindow.height = 500
         self.show()
         self.layout = QFormLayout()
         self.setLayout(self.layout)
@@ -48,12 +47,19 @@ class Login(QWidget):
                 border:2px solid '#fff';
                 margin:10px 0;
             }
+          
             QPushButton{
-                max-width:400px;
-                padding:10px;
-                color:'#fff';
-                font-size:18px;
-            }
+                      font-size:18px;
+                      padding:10px;
+                      max-width:400px;
+                      color: rgb(255, 255, 255);
+                      border-radius:20px;
+                      margin-top:20px;
+                      background-color: rgb(35, 35, 35);
+                  }
+                  QPushButton:hover{
+                          background-color: rgb(19, 81, 143) 
+                          }
         """)
     def get_username_password(self):
         return self.username.text(), self.password.text()

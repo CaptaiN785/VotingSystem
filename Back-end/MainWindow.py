@@ -46,7 +46,7 @@ class MainWindow(QMainWindow):
 
         ## TOGGLE/BURGUER MENU
         ########################################################################
-        self.ui.Btn_Toggle.clicked.connect(lambda: toggleMenu(self, 250, True))
+        self.ui.Btn_Toggle.clicked.connect(lambda: toggleMenu(self, 190, True))
 
         ## PAGES
         ########################################################################
@@ -74,7 +74,7 @@ class MainWindow(QMainWindow):
         self.login_btn.clicked.connect(lambda: self.check_login())
 
     def check_login(self):
-        if(self.Login_panel.get_username_password() == ("admin", "admin")):
+        if(self.Login_panel.get_username_password() == ("", "")):
             self.login_success()
         else:
             showWarning("Invalid username or password!")
@@ -87,6 +87,8 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.ui.centralwidget)
         self.ui.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
+        self.setMaximumWidth(1920)
+        self.setFixedHeight(1080)
         self.showMaximized()
         self.setWindowTitle('Voting Application')
 

@@ -16,53 +16,69 @@ class AddVoterC(QWidget):
 
         ############### database connectivity ######################
         
-        #############################################################
         ############    complete UI     ######################
-        self.label = QLabel("Add Voters")
-        self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-
+        self.header = QLabel("Add Voter")
+        self.header.setStyleSheet("""
+                            font-size:40px;
+                            color:'#fff';
+                            font-weight: bold;
+                            font-family:cambria;
+                            margin-bottom:50px;
+                        """)
+        self.header.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        self.Layout.addRow(self.header)
 
         self.setStyleSheet("""
-            QLineEdit{
-                padding:10px 20px;
-                font-size:16px;
-                color:'#fff';
-                border:2px solid '#fff';
-                margin-top:20px;
-                max-width:400px;
-            }
-            QLabel{
-                font-size:18px;
-                color:'#fff';
-                margin-top:20px;
-            }
-            QPushButton{
-                font-size:16px;
-                padding:10px;
-                max-width:150px;
-                color: rgb(255, 255, 255);
-                border-radius:20px;
-                margin-top:20px;
-                background-color: rgb(35, 35, 35);
-            }
-            QPushButton:hover{
-                    background-color: rgb(19, 81, 143) 
-                    }
-            QComboBox{
-                font-size:16px;
-                padding:10px 20px;
-                color:'#fff';
-                border:2px solid '#fff';
-                margin-top:20px;
-                max-width:400px;
-            }
-        """)
-        self.Layout.addRow(self.label)
+                  QLineEdit{
+                      padding:10px 20px;
+                      font-size:16px;
+                      color:'#fff';
+                      border:2px solid '#fff';
+                      margin-top:20px;
+                      max-width:400px;
+                  }
+                  QLabel{
+                      font-size:18px;
+                      color:'#fff';
+                      margin-top:20px;
+                  }
+                  QPushButton{
+                      font-size:16px;
+                      padding:10px;
+                      max-width:150px;
+                      color: rgb(255, 255, 255);
+                      border-radius:20px;
+                      margin-top:20px;
+                      background-color: rgb(35, 35, 35);
+                  }
+                  QPushButton:hover{
+                          background-color: rgb(19, 81, 143) 
+                          }
+                  QComboBox{
+                      font-size:16px;
+                      padding:10px 20px;
+                      color:'#fff';
+                      border:2px solid '#fff';
+                      margin-top:20px;
+                      max-width:400px;
+                  }
+                  QDateEdit
+                        {
+                        padding:10px 20px;
+                      font-size:16px;
+                      color:'#fff';
+                      border:2px solid '#fff';
+                      margin-top:20px;
+                      max-width:400px;
+                        }
+
+              """)
         # Name
         self.nameLabel = QLabel("Enter your name")
         self.name = QLineEdit(placeholderText="Enter your name")
         self.items.append(self.nameLabel)
         self.items.append(self.name)
+
         self.Layout.addRow(self.nameLabel, self.name)
 
         # phone number
@@ -82,9 +98,6 @@ class AddVoterC(QWidget):
         # DOB
         self.dobLabel = QLabel("Date of birth")
         self.dob = QDateEdit()
-        self.dob.setStyleSheet("*{font-size:16px;max-width:400px;"+
-                "border:2px solid '#fff';"+
-                "padding:10px 0px; margin-top:20px;}")
         self.items.append(self.dobLabel)
         self.Layout.addRow(self.dobLabel, self.dob)
         self.dobVerified = False
@@ -112,17 +125,13 @@ class AddVoterC(QWidget):
         # Submit button
         self.submit = QPushButton(" Submit")
         self.submit.setIcon(QIcon("../images/tick.png"))
-        self.submit.setStyleSheet("*{padding:10px 30px;border-radius:20px;max-width:300px;"+
-        "font-size:16px;background:'#fff';border:2px solid '#0400c4';"+
-        "color:'#0400c4';margin:50px 200px 0 200px;}"+
-        "*:hover{ background:'#0400c4'; color:'#fff';}")
         self.Layout.addRow(self.submit)
         self.submit.clicked.connect(self.addVoter)
 
         for item in self.items:
             if type(item) == QLineEdit:
                 item.setStyleSheet("*{font-size:16px;padding:10px 20px;color:'#fff';max-width:400px;margin-top:20px;}"+
-                "*:active{ border-color:'#f00'; }")
+                "*:active{ border-color:'#fff'; }")
             elif type(item) == QComboBox:
                 item.setStyleSheet("padding:10px 20px;color:'#fff';max-width:400px;"+
                 "margin-top:20px;font-size:16px;;")
@@ -143,19 +152,13 @@ class AddVoterC(QWidget):
 
         self.imageSelector = QPushButton(" Select Image")
         self.imageSelector.setIcon(QIcon("../images/shareicon.png"))
-        self.imageSelector.setStyleSheet(
-            "*{ padding:10px 20px;border:2px solid '#fff';"+
-            "border-radius:20px;"+
-            " background:'#fff';color:'#0400c4';}"+
-            "*:hover{ background:'#0400c4'; color:'#fff'; }"
-            )
         self.imageSelector.setCursor(Qt.CursorShape.PointingHandCursor)
         self.imageSelector.clicked.connect(self.chooseImage)
         VBL.addWidget(self.imageLabel)
         VBL.addWidget(self.imageSelector)
         VBL.addStretch()
 
-    ################################        adding voter to database
+    ########################adding voter to database
     def addVoter(self):
         Name = self.name.text()
         Phone = self.phone.text()

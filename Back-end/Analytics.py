@@ -8,18 +8,54 @@ class Analytics(QWidget):
         self.MainWindow = MainWindow
         self.layout = QFormLayout()
         self.setLayout(self.layout)
-        self.setContentsMargins(100, 30, 100, 30)
+        self.setContentsMargins(50, 10, 50, 10)
+        self.Image = None
 
         self.header = QLabel("Analytics")
         self.header.setStyleSheet("""
-            font-size:40px;
-            color:'#fff';
-            margin:20px;
-            font-family:cambria;
-            margin-bottom:50px;
-        """)
-        self.header.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+                            font-size:40px;
+                            color:'#fff';
+                            font-weight: bold;
+                            font-family:cambria;
+                            margin-bottom:50px;
+                        """)
+        self.header.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.layout.addRow(self.header)
+        self.setStyleSheet("""
+                          QLineEdit{
+                              padding:10px 20px;
+                              font-size:16px;
+                              color:'#fff';
+                              border:2px solid '#fff';
+                              margin-top:20px;
+                              max-width:400px;
+                          }
+                          QLabel{
+                              font-size:18px;
+                              color:'#fff';
+                              margin-top:20px;
+                          }
+                          QPushButton{
+                              font-size:16px;
+                              padding:10px;
+                              max-width:150px;
+                              color: rgb(255, 255, 255);
+                              border-radius:20px;
+                              margin-top:20px;
+                              background-color: rgb(35, 35, 35);
+                          }
+                          QPushButton:hover{
+                                  background-color: rgb(19, 81, 143) 
+                                  }
+                          QComboBox{
+                              font-size:16px;
+                              padding:10px 20px;
+                              color:'#fff';
+                              border:2px solid '#fff';
+                              margin-top:20px;
+                              max-width:400px;
+                          }
+                      """)
 
         self.dateLabel = QLabel("Select election ")
         self.past_election_list, self.eid_map = Database.get_past_election_list()
@@ -42,32 +78,6 @@ class Analytics(QWidget):
         # self.table_header = self.table.horizontalHeader()
         # self.table_header.setSectionResizeMode(0, QHeaderView.strec)
 
-        # use below for style sheet
-        self.setStyleSheet("""
-            QLabel{
-                font-size:18px;
-            }
-            QComboBox{
-                max-width:400px;
-                padding:10px 20px;
-                border:2px solid '#fff';
-                font-size:16px;
-            }
-            QPushButton{
-                max-width:200px;
-                background:'#fff';
-                color:'#0400c4';
-                border:2px solid '#0400c4';
-                padding:10px 20px;
-                border-radius:20px;
-                font-size:16px;
-                margin-top:20px;
-            }
-            QPushButton:hover{
-                background:'#0400c4';
-                color:'#fff';
-            }
-        """)
     def load_result(self):
         if self.election.currentText() == "Select an election":
             showWarning("Please select a election")
