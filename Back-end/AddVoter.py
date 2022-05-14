@@ -20,9 +20,44 @@ class AddVoterC(QWidget):
         ############    complete UI     ######################
         self.label = QLabel("Add Voters")
         self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        self.label.setStyleSheet("font-size:40px;color:'#fff';font-weight:bold;font-family:cambria;")
-        self.Layout.addRow(self.label)
 
+
+        self.setStyleSheet("""
+            QLineEdit{
+                padding:10px 20px;
+                font-size:16px;
+                color:'#fff';
+                border:2px solid '#fff';
+                margin-top:20px;
+                max-width:400px;
+            }
+            QLabel{
+                font-size:18px;
+                color:'#fff';
+                margin-top:20px;
+            }
+            QPushButton{
+                font-size:16px;
+                padding:10px;
+                max-width:150px;
+                color: rgb(255, 255, 255);
+                border-radius:20px;
+                margin-top:20px;
+                background-color: rgb(35, 35, 35);
+            }
+            QPushButton:hover{
+                    background-color: rgb(19, 81, 143) 
+                    }
+            QComboBox{
+                font-size:16px;
+                padding:10px 20px;
+                color:'#fff';
+                border:2px solid '#fff';
+                margin-top:20px;
+                max-width:400px;
+            }
+        """)
+        self.Layout.addRow(self.label)
         # Name
         self.nameLabel = QLabel("Enter your name")
         self.name = QLineEdit(placeholderText="Enter your name")
