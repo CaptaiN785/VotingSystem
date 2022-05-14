@@ -19,9 +19,9 @@ from ui_new import *
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
+        self.setWindowTitle('Login')
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.showMaximized()
 
         def toggleMenu(self, maxWidth, enable):
             if enable:
@@ -87,6 +87,10 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.ui.centralwidget)
         self.ui.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
+        self.showMaximized()
+        self.setWindowTitle('Voting Application')
+
+
 
 def showWarning(message, text="Warning"):
     msg = QMessageBox()

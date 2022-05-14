@@ -5,8 +5,9 @@ class Login(QWidget):
     def __init__(self, MainWindow):
         super().__init__(MainWindow)
         self.MainWindow = MainWindow
-        self.setContentsMargins(400, 100, 400, 0)
-        self.showMaximized()
+        self.setContentsMargins(50, 50, 50, 50)
+        MainWindow.width = 500
+        MainWindow.height = 500
         self.show()
         self.layout = QFormLayout()
         self.setLayout(self.layout)
