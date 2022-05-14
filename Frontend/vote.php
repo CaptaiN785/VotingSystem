@@ -25,7 +25,7 @@
         }
     }
 ?>
-<div class="container">
+<div class="container" >
     <h2 class = "header text-center" >Election Candidates</h2>
     <table class="table table-hover table-bordered">
         <thead>
@@ -72,7 +72,7 @@
     <script src = "face-api.min.js"></script>
     <script src = "server.js"></script>
 <!-- Creating modals for capturing the image and verifying -->
-</div>
+</div><!-- Container ->
 <?php
     include('include/footer.php');
 ?>
