@@ -9,7 +9,7 @@ class Analytics(QWidget):
         self.layout = QFormLayout()
         self.setLayout(self.layout)
         self.setContentsMargins(50, 10, 50, 10)
-        self.Image = None
+        self.layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         self.header = QLabel("Analytics")
         self.header.setStyleSheet("""
@@ -21,15 +21,31 @@ class Analytics(QWidget):
                         """)
         self.header.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.layout.addRow(self.header)
+
+        self.dateLabel = QLabel("Select election ")
+        self.past_election_list, self.eid_map = Database.get_past_election_list()
+        self.election = QComboBox()
+        self.election.addItem("Select an election")
+        self.election.addItems(self.past_election_list)
+        self.layout.addRow(self.dateLabel, self.election)
+        
+        self.btn = QPushButton("Search")
+        self.btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.layout.addRow(self.btn)
+        self.btn.clicked.connect(lambda: self.load_result())
+
+        self.table = QTableWidget()
+        self.layout.addWidget(self.table)
+        self.table.setRowCount(12)
+        self.table.setColumnCount(2)
+        self.table.setColumnWidth(0, 250)
+        self.table.setColumnWidth(1, 250)
+        self.table.setMaximumWidth(520)
+        self.table.setHorizontalHeaderLabels(["Name", "Vote"])
+        self.table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        # self.table_header = self.table.horizontalHeader()
+        # self.table_header.setSectionResizeMode(0, QHeaderView.strec)
         self.setStyleSheet("""
-                        QLineEdit{
-                            padding:10px 20px;
-                            font-size:16px;
-                            color:'#fff';
-                            border:2px solid '#fff';
-                            margin-top:20px;
-                            max-width:400px;
-                        }
                         QLabel{
                             font-size:18px;
                             color:'#fff';
@@ -58,35 +74,17 @@ class Analytics(QWidget):
                         QTableWidget{
                             font-size:16px;
                             color:'#fff';
+                            text-align:center;
                         }
                       """)
-
-        self.dateLabel = QLabel("Select election ")
-        self.past_election_list, self.eid_map = Database.get_past_election_list()
-        self.election = QComboBox()
-        self.election.addItem("Select an election")
-        self.election.addItems(self.past_election_list)
-        self.layout.addRow(self.dateLabel, self.election)
-        
-        self.btn = QPushButton("Search")
-        self.btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        self.layout.addRow(self.btn)
-        self.btn.clicked.connect(lambda: self.load_result())
-
-        self.table = QTableWidget()
-        self.layout.addWidget(self.table)
-        self.table.setRowCount(10)
-        self.table.setColumnCount(2)   
-        self.table.setHorizontalHeaderLabels(["Name", "Vote"])
-        self.table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
-        # self.table_header = self.table.horizontalHeader()
-        # self.table_header.setSectionResizeMode(0, QHeaderView.strec)
 
     def load_result(self):
         if self.election.currentText() == "Select an election":
             showWarning("Please select a election")
             return;
         self.result = Database.get_result(self.eid_map[self.election.currentText()],self.election.currentText())
+        self.table.setRowCount(max(12, len(self.result)))
+        self.table.clearContents()
         for i in range(len(self.result)):
                 self.table.setItem(i, 0, QTableWidgetItem(str(self.result[i][1])))
                 self.table.setItem(i, 1, QTableWidgetItem(str(self.result[i][0])))

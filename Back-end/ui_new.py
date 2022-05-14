@@ -318,3 +318,15 @@ class Ui_MainWindow(object):
                                                  "QPushButton:hover {"
                                                  "    background-color: rgb(20, 80, 140);"
                                                  "}")
+    def login_success(self, MainWindow):
+        ########################### ADD STACKED WIDGET ####################
+        self.verticalLayout_5.addWidget(self.stackedWidget)
+        self.horizontalLayout_2.addWidget(self.frame_pages)
+        self.verticalLayout.addWidget(self.Content)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.stackedWidget.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setMaximumWidth(1920)
+        MainWindow.setFixedHeight(1080)
+        MainWindow.showMaximized()
+        MainWindow.setWindowTitle('Voting Application')

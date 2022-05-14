@@ -19,15 +19,19 @@ class HomeC(QWidget):
         # Table for upcoming election
         self.data = Database.get_upcoming_election_table_detail()
         self.table = QTableWidget()
-        self.table.setRowCount(16)
+        self.table.setRowCount(max(12, len(self.data)))
         self.table.setColumnCount(3)   
-        self.table.setColumnWidth(0, 245) 
+        self.table.setColumnWidth(0, 250) 
         self.table.setColumnWidth(1, 250) 
         self.table.setColumnWidth(2, 250)
-        self.table.setMaximumHeight(300)
+        self.table.setMaximumHeight(400)
+        self.table.setMaximumWidth(790)
         self.table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table.setHorizontalHeaderLabels(["Date", "Post", "Assembly"])
-        # self.table.setItem()
+        for i in range(len(self.data)):
+            for j in range(3):
+                self.table.setItem(i, j, QTableWidgetItem(str(self.data[i][j])))
+
         self.verticalLayout_7.addWidget(self.table)
         self.verticalLayout_7.addStretch()
 
@@ -40,5 +44,6 @@ class HomeC(QWidget):
             }
             QTableWidget{
                 color:'#000';
+                font-size:16px;
             }
         """)

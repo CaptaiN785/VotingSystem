@@ -6,7 +6,7 @@ user = "root"
 password = "Mukesh@2001"
 database = "votingsystem"
 
-digit = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+digit = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
 POSTS = ["MLA", "Chief Minister", "Prime minister"]
 
@@ -416,7 +416,7 @@ def get_upcoming_election_table_detail():
 
         data = []
         for X in ls:
-            data.append([X[0], str(date.strftime(X[1], '%d-%m-%Y')), X[2]])
+            data.append([str(date.strftime(X[1],'%d-%m-%Y')), X[0], X[2]])
     except:
         print("Error while fetching the election table details.")
 

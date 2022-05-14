@@ -1,4 +1,3 @@
-import this
 from Module import *
 from Home import *
 from AddCandidate import *
@@ -61,24 +60,10 @@ class MainWindow(QMainWindow):
         self.login_btn.clicked.connect(lambda: self.check_login())
 
     def check_login(self):
-        if(self.Login_panel.get_username_password() == ("", "")):
-            self.login_success()
+        if(self.Login_panel.get_username_password() == ("admin", "admin")):
+            self.ui.login_success(self)
         else:
             showWarning("Invalid username or password!")
-
-    def login_success(self):
-        ########################### ADD STACKED WIDGET ####################
-        self.ui.verticalLayout_5.addWidget(self.ui.stackedWidget)
-        self.ui.horizontalLayout_2.addWidget(self.ui.frame_pages)
-        self.ui.verticalLayout.addWidget(self.ui.Content)
-        self.setCentralWidget(self.ui.centralwidget)
-        self.ui.stackedWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(self)
-        self.setMaximumWidth(1920)
-        self.setFixedHeight(1080)
-        self.showMaximized()
-        self.setWindowTitle('Voting Application')
-
 
 
 def showWarning(message, text="Warning"):

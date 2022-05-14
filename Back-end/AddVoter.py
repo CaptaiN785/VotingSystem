@@ -160,7 +160,7 @@ class AddVoterC(QWidget):
 
     ########################adding voter to database
     def addVoter(self):
-        Name = self.name.text()
+        Name = str(self.name.text())
         Phone = self.phone.text()
         Email = self.email.text()
         DOB = self.dob.text()
