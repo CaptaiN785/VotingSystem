@@ -9,49 +9,44 @@ class AddCandidateC(QWidget):
         self.setLayout(self.layout)
         self.setContentsMargins(100, 10, 100, 50)
         self.Image = None
-        
-
-
         self.setStyleSheet("""
-            QLineEdit{
-                padding:10px 20px;
-                font-size:16px;
-                color:'#fff';
-                border:2px solid '#fff';
-                margin-top:20px;
-                max-width:400px;
-            }
-            QLabel{
-                font-size:18px;
-                color:'#fff';
-                margin-top:20px;
-            }
-            QPushButton{
-                font-size:16px;
-                padding:10px;
-                max-width:150px;
-                background:'#0400c4';
-                color:'#fff';
-                border:2px solid '#fff';
-                border-radius:20px;
-                margin-top:20px;
-            }
-            QPushButton:hover{
-                background:'#fff';
-                color:'#0400c4';
-            }
-            QComboBox{
-                font-size:16px;
-                padding:10px 20px;
-                color:'#fff';
-                border:2px solid '#fff';
-                margin-top:20px;
-                max-width:400px;
-            }
-        """)
+                  QLineEdit{
+                      padding:10px 20px;
+                      font-size:16px;
+                      color:'#fff';
+                      border:2px solid '#fff';
+                      margin-top:20px;
+                      max-width:400px;
+                  }
+                  QLabel{
+                      font-size:18px;
+                      color:'#fff';
+                      margin-top:20px;
+                  }
+                  QPushButton{
+                      font-size:16px;
+                      padding:10px;
+                      max-width:150px;
+                      color: rgb(255, 255, 255);
+                      border-radius:20px;
+                      margin-top:20px;
+                      background-color: rgb(35, 35, 35);
+                  }
+                  QPushButton:hover{
+                          background-color: rgb(19, 81, 143) 
+                          }
+                  QComboBox{
+                      font-size:16px;
+                      padding:10px 20px;
+                      color:'#fff';
+                      border:2px solid '#fff';
+                      margin-top:20px;
+                      max-width:400px;
+                  }
+              """)
         self.layout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 
-        self.heading = QLabel("Add candidate")
+        self.heading = QLabel("Add Candidate")
         self.heading.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.heading.setStyleSheet("font-size:40px;font-family:cambria; font-weight:bold;")
         self.layout.addRow(self.heading)
@@ -61,6 +56,7 @@ class AddCandidateC(QWidget):
         self.layout.addRow(self.vidlabel, self.vid)
 
         self.searchBtn = QPushButton(" Search")
+
         self.searchBtn.setIcon(QIcon("../images/search.png"))
         self.searchBtn.setCursor(Qt.CursorShape.PointingHandCursor)
         self.layout.addRow(self.searchBtn)
@@ -72,14 +68,12 @@ class AddCandidateC(QWidget):
         if len(self.electionName) == 0:
             showWarning("There is no election in future.")
             return
-        vid = self.vid.text()
-        if not vid.isdigit():
-            showWarning("Entered voterid is not valid.")
+        voterid = self.vid.text().strip()
+        if not voterid.isdigit():
+            showWarning("Entered voter ID is not valid.")
             return
 
-        voterid = int(vid)
         voter_list = Database.get_voterid_list()
-
         if not voterid in voter_list:
             showWarning("No record found.")
             return
@@ -92,20 +86,17 @@ class AddCandidateC(QWidget):
         self.Layout = QFormLayout()
         self.frame.setLayout(self.Layout)
         self.layout.addWidget(self.frame)
-        
         info = Database.get_voter_info(voterid)
-        self.info = QLabel("{} \n{}".format(info["name"], info["dob"])) # showing name and dob for clarification
+        self.info = QLabel("{} \n{}".format(info["name"], info["dob"]))# showing name and dob for clarification
         # self.info.setEnabled(False)
-
         self.image = QPixmap(Database.get_voter_photo(voterid))
         self.imageUI = QLabel()
         self.imageUI.setPixmap(self.image.scaled(100, 120, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation))
         self.Layout.addRow(self.info, self.imageUI)
-    
         self.electionlabel = QLabel("Select election")        
         self.election = QComboBox()
         self.election.addItems(self.electionName)
-        self.election.activated.connect(self.itemChanged)
+        # self.election.activated.connect(self.itemChanged)
         self.Layout.addRow(self.electionlabel,  self.election)
         
         # self.symbol = QPushButton("  Select symbol")
