@@ -305,7 +305,7 @@ class Ui_MainWindow(object):
     def button5(self):
         self.stackedWidget.setCurrentWidget(self.Analytics)
         self.clean()
-        self.btn_Analytics.clicked.setStyleSheet("QPushButton {"
+        self.btn_Analytics.setStyleSheet("QPushButton {"
                                                  "color: rgb(255, 255, 255);"
                                                  "text-align: left;"
                                                  "font-size: 18px;"
