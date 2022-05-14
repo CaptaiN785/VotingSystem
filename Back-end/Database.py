@@ -424,6 +424,25 @@ def get_upcoming_election_table_detail():
 
     return data
 
+def get_result(eid, table_name):
+    try:
+        conn = get_connection()
+        mycursor = conn.cursor()
+        sql = "SELECT CID FROM CANDIDATE WHERE EID = {}".format(eid)
+        mycursor.execute(sql)
+        ls = mycursor.fetchall()
+        cids = [x[0] for x in ls]
+
+        result = []
+        for cid in cids:
+            sql = "SELECT COUNT(P.CID), V.NAME FROM {} P, VOTER V, CANDIDATE C WHERE V.VOTERID = C.VID AND C.CID = P.CID AND P.CID = {}".format(table_name, cid)
+            mycursor.execute(sql)
+            ls = mycursor.fetchone()
+            result.append([ls[0], ls[1]])
+    except:
+        print("Error while fetching result")
+
+    return result
 if __name__ == '__main__':
     # get_voter_info(76736087)
     # get_voter_photo(76736087)
@@ -432,4 +451,5 @@ if __name__ == '__main__':
     # print(name, eid)
     # print(get_next_symbol(2))
     # print(get_upcoming_election_list())
-    print(get_upcoming_election_table_detail())
+    # print(get_upcoming_election_table_detail())
+    print(get_result(1, "MLA_2022"))

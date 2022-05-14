@@ -97,7 +97,7 @@ class Ui_MainWindow(object):
 
         ######################### LEFT MENU FRAME ###########################
         self.frame_top_menus = QtWidgets.QFrame(self.frame_left_menu)
-        self.frame_top_menus.setMinimumSize(QtCore.QSize(70, 160)) # left menu size policy
+        self.frame_top_menus.setMinimumSize(QtCore.QSize(70, 200)) # left menu size policy
         self.frame_top_menus.setMaximumSize(QtCore.QSize(70, 16777215))
         self.frame_top_menus.setStyleSheet("background-color: rgb(35, 35, 35);")
         self.frame_top_menus.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -179,6 +179,23 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.btn_ElectionDate)
         self.btn_ElectionDate.setIcon(QIcon("../images/tick.png"))
 
+        #########################    Button to add analytics ###################
+        self.btn_Analytics = QtWidgets.QPushButton()
+        self.verticalLayout_3.addWidget(self.btn_Analytics)
+        self.btn_Analytics.setMinimumSize(QtCore.QSize(70, 40))
+        # self.btn_Home.setText(u"\u2261")
+        self.btn_Analytics.setIcon(QIcon("../images/analytics.png"))
+        self.btn_Analytics.setStyleSheet("QPushButton {\n"
+                                            "    color: rgb(255, 255, 255);\n"
+                                            "    background-color: rgb(35, 35, 35);\n"
+                                            "    border: 0px solid;\n"
+                                            "}\n"
+                                            "QPushButton:hover {\n"
+                                            "    background-color: rgb(85, 170, 255);\n"
+                                            "}")
+        self.btn_Home.setObjectName("btn_Analytics")
+        self.verticalLayout_4.addWidget(self.btn_Analytics)
+
 
         ########################### ADD FRAMES ###########################
         self.horizontalLayout_2.addWidget(self.frame_left_menu)
@@ -208,6 +225,10 @@ class Ui_MainWindow(object):
         self.ElectionDate = ElectionDate(MainWindow)
         self.ElectionDate.setObjectName("ElectionDate")
         self.stackedWidget.addWidget(self.ElectionDate)
+
+        self.Analytics = Analytics(MainWindow)
+        self.Analytics.setObjectName("Analytics")
+        self.stackedWidget.addWidget(self.Analytics)
 
         ########################### ADD STACKED WIDGET ####################
         self.verticalLayout_5.addWidget(self.stackedWidget)

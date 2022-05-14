@@ -1,4 +1,5 @@
 from Module import *
+import Database
 
 class HomeC(QWidget):
     def __init__(self, MainWindow):
@@ -16,6 +17,7 @@ class HomeC(QWidget):
         
         # election  ->  candidateid, post ,date, vote
         # Table for upcoming election
+        self.data = Database.get_upcoming_election_table_detail()
         self.table = QTableWidget()
         self.table.setRowCount(16)
         self.table.setColumnCount(3)   
@@ -25,6 +27,7 @@ class HomeC(QWidget):
         self.table.setMaximumHeight(300)
         self.table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table.setHorizontalHeaderLabels(["Date", "Post", "Assembly"])
+        # self.table.setItem()
         self.verticalLayout_7.addWidget(self.table)
         self.verticalLayout_7.addStretch()
 
