@@ -71,10 +71,23 @@ class Analytics(QWidget):
                             margin-top:20px;
                             max-width:400px;
                         }
+                      
                         QTableWidget{
                             font-size:16px;
                             color:'#fff';
                             text-align:center;
+                            background-color: #2D2D2D;
+                            border: 0px solid ;
+                            padding: 10px;
+                        }
+                        QTableCornerButton::section { 
+                            background-color: rgb(7, 44, 82);
+                            border: 0px solid ;
+                        }
+                        QHeaderView::section {  
+                            color:white; background-color: rgb(7, 44, 82);
+                            font-size:16px;
+                            border: 0px solid ;
                         }
                       """)
 

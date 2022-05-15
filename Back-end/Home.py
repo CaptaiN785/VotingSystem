@@ -24,7 +24,7 @@ class HomeC(QWidget):
         self.table.setColumnWidth(0, 250) 
         self.table.setColumnWidth(1, 250) 
         self.table.setColumnWidth(2, 250)
-        self.table.setMaximumHeight(400)
+        self.table.setMaximumHeight(800)
         self.table.setMaximumWidth(790)
         self.table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table.setHorizontalHeaderLabels(["Date", "Post", "Assembly"])
@@ -37,13 +37,16 @@ class HomeC(QWidget):
 
         self.setStyleSheet("""
             QTableWidget{
-                color: blue;
-                background-color: yellow;
-                selection-color: yellow;
-                selection-background-color: blue;
-                font-size:16px;
-                background-color: #646464;
-                 border: 1px solid #fffff8;
+                background-color: #2D2D2D;
+                 border: 0px solid ;
+                 padding: 10px;
             }
-            
+            QTableCornerButton::section { 
+                                    background-color: rgb(7, 44, 82);
+                                    border: 0px solid ;
+                                         }
+            QHeaderView::section { color:white; background-color: rgb(7, 44, 82);
+                             font-size:16px;
+                            border: 0px solid ;
+                                    }
         """)
