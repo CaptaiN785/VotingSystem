@@ -51,6 +51,13 @@ class MainWindow(QMainWindow):
         self.ui.btn_AddCandidate.clicked.connect(self.ui.button3)
         self.ui.btn_ElectionDate.clicked.connect(self.ui.button4)
         self.ui.btn_Analytics.clicked.connect(self.ui.button5)
+        # MINIMIZE
+        self.ui.Min_btn.clicked.connect(lambda: self.showMinimized())
+        # MAXIMIZE/RESTORE
+        self.ui.Max_btn.clicked.connect(lambda: self.showMaximized())
+
+        # CLOSE APPLICATION
+        self.ui.Close_btn.clicked.connect(lambda: self.close())
         self.show()
 
 

@@ -71,37 +71,59 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addStretch(1)
         self.horizontalLayout.setSpacing(2)
 
+
+        ############### WINNDOW TITLE####################
+
+
+
         ##########TOP FRAME BUTTONS###############
         self.Min_btn = QtWidgets.QPushButton()
-
         self.horizontalLayout.addWidget(self.Min_btn, alignment=QtCore.Qt.AlignmentFlag.AlignTop )
-        self.Min_btn.setMinimumSize(QtCore.QSize(20, 20))
+        self.Min_btn.setMinimumSize(QtCore.QSize(50, 30))
         self.Min_btn.setIcon(QIcon("../images/icon_minimize.svg"))
-        self.Min_btn.setIconSize(QtCore.QSize(16, 16))
+        self.Min_btn.setIconSize(QtCore.QSize(18, 18))
         self.Min_btn.setObjectName("Min_btn")
-        self.Min_btn.setStyleSheet("color: rgb(255, 255, 255);"
-                                   "border: 0px solid;"
-                                   )
+        self.Min_btn.setStyleSheet("QPushButton {"
+                                            "color: rgb(255, 255, 255);"
+                                            "border: 0px solid;"
+                                            "padding-left: 5px; padding-right: 5px;"
+                                            "padding-top: 5px; padding-bottom: 5px;"
+                                            "}"
+                                            "QPushButton:hover {"
+                                            "    background-color: rgb(20, 80, 140);"
+                                            "}")
 
         self.Max_btn = QtWidgets.QPushButton()
         self.horizontalLayout.addWidget(self.Max_btn, alignment=QtCore.Qt.AlignmentFlag.AlignTop )
-        self.Max_btn.setMinimumSize(QtCore.QSize(20, 20))
+        self.Max_btn.setMinimumSize(QtCore.QSize(50, 30))
         self.Max_btn.setIcon(QIcon("../images/icon_maximize.svg"))
-        self.Max_btn.setIconSize(QtCore.QSize(16, 16))
+        self.Max_btn.setIconSize(QtCore.QSize(12, 12))
         self.Max_btn.setObjectName("Max_btn")
-        self.Max_btn.setStyleSheet("color: rgb(255, 255, 255);"
-                                   "border: 0px solid;"
-                                   )
+        self.Max_btn.setStyleSheet("QPushButton {"
+                                            "color: rgb(255, 255, 255);"
+                                            "border: 0px solid;"
+                                            "padding-left: 5px; padding-right: 5px;"
+                                            "padding-top: 5px; padding-bottom: 5px;"
+                                            "}"
+                                            "QPushButton:hover {"
+                                            "    background-color: rgb(20, 80, 140);"
+                                            "}")
 
         self.Close_btn = QtWidgets.QPushButton()
         self.horizontalLayout.addWidget(self.Close_btn, alignment=QtCore.Qt.AlignmentFlag.AlignTop )
-        self.Close_btn.setMinimumSize(QtCore.QSize(20, 20))
+        self.Close_btn.setMinimumSize(QtCore.QSize(50, 30))
         self.Close_btn.setIcon(QIcon("../images/icon_close.svg"))
-        self.Close_btn.setIconSize(QtCore.QSize(16, 16))
+        self.Close_btn.setIconSize(QtCore.QSize(12, 12))
         self.Close_btn.setObjectName("Close_btn")
-        self.Close_btn.setStyleSheet("color: rgb(255, 255, 255);"
-                                   "border: 0px solid;"
-                                   )
+        self.Close_btn.setStyleSheet("QPushButton {"
+                                            "color: rgb(255, 255, 255);"
+                                            "border: 0px solid;"
+                                            "padding-left: 5px; padding-right: 5px;"
+                                            "padding-top: 5px; padding-bottom: 5px;"
+                                            "}"
+                                            "QPushButton:hover {"
+                                            "    background-color: rgb(240, 20, 36);"
+                                            "}")
 
         ######################## MAIN CONTENT #########################
         self.Content = QtWidgets.QFrame(self.centralwidget)
