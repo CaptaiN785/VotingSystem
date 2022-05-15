@@ -53,6 +53,8 @@ class Ui_MainWindow(object):
                                       "border: 0px solid;"
                                       "font-size:24px;")
         self.Btn_Toggle.setText("\u2261")
+        self.Btn_Toggle.setMinimumSize(QtCore.QSize(70, 40))
+
         self.Btn_Toggle.setObjectName("Btn_Toggle")
 
         #################### TOP FRAME ########################################
@@ -66,6 +68,40 @@ class Ui_MainWindow(object):
         self.frame_top.setObjectName("frame_top")
         self.horizontalLayout.addWidget(self.frame_top)
         self.verticalLayout.addWidget(self.Top_Bar)
+        self.horizontalLayout.addStretch(1)
+        self.horizontalLayout.setSpacing(2)
+
+        ##########TOP FRAME BUTTONS###############
+        self.Min_btn = QtWidgets.QPushButton()
+
+        self.horizontalLayout.addWidget(self.Min_btn, alignment=QtCore.Qt.AlignmentFlag.AlignTop )
+        self.Min_btn.setMinimumSize(QtCore.QSize(20, 20))
+        self.Min_btn.setIcon(QIcon("../images/icon_minimize.svg"))
+        self.Min_btn.setIconSize(QtCore.QSize(16, 16))
+        self.Min_btn.setObjectName("Min_btn")
+        self.Min_btn.setStyleSheet("color: rgb(255, 255, 255);"
+                                   "border: 0px solid;"
+                                   )
+
+        self.Max_btn = QtWidgets.QPushButton()
+        self.horizontalLayout.addWidget(self.Max_btn, alignment=QtCore.Qt.AlignmentFlag.AlignTop )
+        self.Max_btn.setMinimumSize(QtCore.QSize(20, 20))
+        self.Max_btn.setIcon(QIcon("../images/icon_maximize.svg"))
+        self.Max_btn.setIconSize(QtCore.QSize(16, 16))
+        self.Max_btn.setObjectName("Max_btn")
+        self.Max_btn.setStyleSheet("color: rgb(255, 255, 255);"
+                                   "border: 0px solid;"
+                                   )
+
+        self.Close_btn = QtWidgets.QPushButton()
+        self.horizontalLayout.addWidget(self.Close_btn, alignment=QtCore.Qt.AlignmentFlag.AlignTop )
+        self.Close_btn.setMinimumSize(QtCore.QSize(20, 20))
+        self.Close_btn.setIcon(QIcon("../images/icon_close.svg"))
+        self.Close_btn.setIconSize(QtCore.QSize(16, 16))
+        self.Close_btn.setObjectName("Close_btn")
+        self.Close_btn.setStyleSheet("color: rgb(255, 255, 255);"
+                                   "border: 0px solid;"
+                                   )
 
         ######################## MAIN CONTENT #########################
         self.Content = QtWidgets.QFrame(self.centralwidget)
@@ -78,7 +114,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
 
-        ##################### TOP MENU FRAME################################
+        ##################### SIDE MENU FRAME################################
         self.frame_left_menu = QtWidgets.QFrame(self.Content)
         self.frame_left_menu.setMinimumSize(QtCore.QSize(190, 0))
         self.frame_left_menu.setMaximumSize(QtCore.QSize(70, 16777215))
@@ -306,18 +342,19 @@ class Ui_MainWindow(object):
         self.stackedWidget.setCurrentWidget(self.Analytics)
         self.clean()
         self.btn_Analytics.setStyleSheet("QPushButton {"
-                                                 "color: rgb(255, 255, 255);"
-                                                 "text-align: left;"
-                                                 "font-size: 18px;"
-                                                 "height: 48px;"
-                                                 "border-width: 0px;"
-                                                 "font-family:cambria;"
-                                                 "padding-left: 20px; padding-right: 3px;"
-                                                 "padding-top: 1px; padding-bottom: 1px;"
-                                                 "}"
-                                                 "QPushButton:hover {"
-                                                 "    background-color: rgb(20, 80, 140);"
-                                                 "}")
+                                         "color: rgb(255, 255, 255);"
+                                         "text-align: left;"
+                                         "font-size: 18px;"
+                                         "height: 48px;"
+                                         "border-width: 0px;"
+                                         "font-family:cambria;"
+                                         "padding-left: 20px; padding-right: 3px;"
+                                         "padding-top: 1px; padding-bottom: 1px;"
+                                         "}"
+                                         "QPushButton:hover {"
+                                         "    background-color: rgb(20, 80, 140);"
+                                         "}")
+
     def login_success(self, MainWindow):
         ########################### ADD STACKED WIDGET ####################
         self.verticalLayout_5.addWidget(self.stackedWidget)

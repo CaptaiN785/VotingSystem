@@ -37,13 +37,13 @@ class HomeC(QWidget):
 
         self.setStyleSheet("""
             QTableWidget{
-                border:2px solid '#fff';
-                margin-top:30px;
-                padding:0px;
-                background:'#85fbff';
-            }
-            QTableWidget{
-                color:'#000';
+                color: blue;
+                background-color: yellow;
+                selection-color: yellow;
+                selection-background-color: blue;
                 font-size:16px;
+                background-color: #646464;
+                 border: 1px solid #fffff8;
             }
+            
         """)
