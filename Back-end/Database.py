@@ -451,4 +451,5 @@ if __name__ == '__main__':
     # print(get_next_symbol(2))
     # print(get_upcoming_election_list())
     # print(get_upcoming_election_table_detail())
-    print(get_result(1, "MLA_2022"))
+    # print(get_result(1, "MLA_2022"))
+    print(get_voterid_list())

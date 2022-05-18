@@ -79,6 +79,7 @@ class AddCandidateC(QWidget):
             return
 
         voter_list = Database.get_voterid_list()
+        voterid = int(voterid)
         if not voterid in voter_list:
             showWarning("No record found.")
             return
