@@ -37,6 +37,8 @@ class HomeC(QWidget):
 
         self.setStyleSheet("""
             QTableWidget{
+                font-size:16px;
+                color: white;
                 background-color: #2D2D2D;
                  border: 0px solid ;
                  padding: 10px;
