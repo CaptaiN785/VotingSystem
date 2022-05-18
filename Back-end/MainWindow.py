@@ -67,7 +67,7 @@ class MainWindow(QMainWindow):
         self.login_btn.clicked.connect(lambda: self.check_login())
 
     def check_login(self):
-        if(self.Login_panel.get_username_password() == ("", "")):
+        if(self.Login_panel.get_username_password() == ("admin", "admin")):
             self.ui.login_success(self)
         else:
             showWarning("Invalid username or password!")
