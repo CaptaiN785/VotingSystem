@@ -151,11 +151,52 @@
         </div>
     </section>
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section" style="padding-top:80px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Contact Section</h1>
+                    <h1>Contact Us</h1>
+                    <p class ="lead">
+                        Do you have any question? Please don't hesitate to contact us directly.
+                        Our team will come back to you within a matter of hour to help you.
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6" style="padding:10px;">
+                        <form style="text-align:left;" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);  ?>">
+                            <div class="form-group">
+                                <label for="r_name">Enter you name</label>
+                                <input type="text" id="r_name" placeholder="Enter your name" name="r_name" class = "form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="r_email">Enter your email</label>
+                                <input type="email" id ="r_email" placeholder="Enter your email" name="r_email" class = "form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="r_subject">Your subject</label>
+                                <input type="text" id="r_subject" placeholder="Subject" name="r_subject" class = "form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="r_message">Your message</label>
+                                <textarea class = "form-control" id="r_message" placeholder="Enter your message" name="r_message"></textarea>
+                            </div>
+                            <button type="submit" class ="btn btn-primary" name="r_submit">Submit</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-6" style="padding:10px;">
+                        <div class="row">
+                            <h2 class="display-4">Contact information</h2>
+                        </div>
+                        <div style="margin:10px 0;">
+                            <p style="font-size:1.5rem;">Sector-17,Chandigarh, Punjab <br>eci.chandigarh@gov.in<br>+91 2354873647</p>
+                        </div>
+                        <div style="margin:10px 0;">
+                            <p style="font-size:1.5rem;">Naraina village,New Delhi<br>eci.newdelhi@gov.in<br>+91 6534873647</p>
+                        </div>
+                        <div style="margin:10px 0;">
+                            <p style="font-size:1.5rem;">Khajanchi road,Patna,Bihar<br>eci.patna@gov.in<br>+91 9724873647</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
