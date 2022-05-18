@@ -1,7 +1,7 @@
 <!-- Database details -->
 <?php
 $host = "localhost";
-$password = "Mukesh@2001";
+$password = "";
 $user = "root";
 $database = "votingsystem";
 
