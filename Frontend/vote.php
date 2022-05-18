@@ -58,6 +58,9 @@
         <div class="row text-center">
             <label class = "lead ">Plase wait camera will turn on soon...</label>
         </div>
+        <div id="confirm_label" style="display:none;text-align:center;">
+            <label style="font-size:18px;">Camera is running...</label>
+        </div>
         <div class="row" style="width:max-content; margin:0 auto;">
             <video id = "video" autoplay muted width="300" height="300"></video>
         </div>
