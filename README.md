@@ -14,10 +14,10 @@
 * Front-end
 
 ### Back-end
-It is complete python application. It handles all the information required for any voting system. It has features like adding <br>
-voters, creating election date,adding candidate for election, election results. While voter registration, it saves an image of<br>
-voter information on desktop which help voter to get the randomized voterId. While Adding candidate, it automatically assigns<br>
-the symbols for candidate which is non-repeatable. All database setup is automatically done while running this application.<br>
+It is complete python application. It handles all the information required for any voting system. It has features like adding
+voters, creating election date,adding candidate for election, election results. While voter registration, it saves an image of
+voter information on desktop which help voter to get the randomized voterId. While Adding candidate, it automatically assigns
+the symbols for candidate which is non-repeatable. All database setup is automatically done while running this application.
 If there is no any important information to run the application, it automatically add some dummy information.
 
 #### Languages used: 
@@ -37,8 +37,8 @@ If there is no any important information to run the application, it automaticall
 
 
 ### Front-end
-It is a web-application. It has all the features of voting process like casting votes, getting results, upcomming election<br>
-details, profile printing. Vote is considered to be casted upon face recognition of voters. Face is recognized it macthing <br>
+It is a web-application. It has all the features of voting process like casting votes, getting results, upcomming election
+details, profile printing. Vote is considered to be casted upon face recognition of voters. Face is recognized it macthing 
 percentage is 60 or more. One voter cann't cast more than vote which is stored in datebase as history of election.
 
 #### Lanugages used:
