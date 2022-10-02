@@ -56,3 +56,4 @@ percentage is 60 or more. One voter cann't cast more than vote which is stored i
 
 * Method 1: Put project "VotingSystem" in htdocs of Xampp server.
 * Method 2: Download this project and put directory of apache server as "your/directory/Votingsystem/" in configuration file. 
+Thank you.
